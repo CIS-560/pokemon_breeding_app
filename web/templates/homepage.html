@@ -15,6 +15,10 @@
         <label for="pokemon-select">Choose your desired pokemon</label>
         <select name="pokemon" id="pokemon-select" class="form-control">
             <option value="not_selected">&lt;Not Selected&gt;</option>
+   <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
             {% for pokemon, pokemon_count in pokemons %}
                 <option value="{{ pokemon|title }}">{{ pokemon|title }} ({{ pokemon_count }})</option>
             {% endfor %}
@@ -25,6 +29,10 @@
         <label for="egg-move-select">Choose your desired egg move</label>
         <select name="egg-move" id="egg-move-select" class="form-control">
             <option value="not_selected">&lt;Select a Pokemon First&gt;</option>
+   <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
             {% for egg_move, egg_move_count in egg_moves %}
                 <option value="{{ egg_move|title }}">
                     {{ egg_move|title }} ({{ egg_move_count }})
