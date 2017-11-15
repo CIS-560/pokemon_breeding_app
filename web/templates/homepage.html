@@ -6,26 +6,36 @@
     <fieldset>
     
     <div class="poke-pic"> 
+        <img />
     
     </div>
 
     <div class="form-group">
-        <label for="material-select">Material</label>
-            <select name="pokemon" id="pokemon-select" class="form-control">
-                <option value="not_selected">&lt;Not Selected&gt;</option>
-                {% for pokemon, pokemon_count in pokemons %}
-                    <option value="{{ pokemon|title }}">{{ pokemon|title }} ({{ pokemon_count }})</option>
-                {% endfor %}
-            </select>
-            <select name="egg-move" id="egg-move-select" class="form-control">
-                <option value="not_selected">&lt;Not Selected&gt;</option>
-                {% for egg_move, egg_move_count in egg_moves %}
+        <!-- Autosearch all pokemon -->
+        <label for="pokemon-select">Choose your desired pokemon</label>
+        <select name="pokemon" id="pokemon-select" class="form-control">
+            <option value="not_selected">&lt;Not Selected&gt;</option>
+            {% for pokemon, pokemon_count in pokemons %}
+                <option value="{{ pokemon|title }}">{{ pokemon|title }} ({{ pokemon_count }})</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <!-- combo box all egg moves -->
+        <label for="egg-move-select">Choose your desired egg move</label>
+        <select name="egg-move" id="egg-move-select" class="form-control">
+            <option value="not_selected">&lt;Select a Pokemon First&gt;</option>
+            {% for egg_move, egg_move_count in egg_moves %}
                 <option value="{{ egg_move|title }}">
                     {{ egg_move|title }} ({{ egg_move_count }})
                 </option>
-                {% endfor %}
-            </select>
+            {% endfor %}
+        </select>
     </div>
+    <br>
+    <button type="button" id="search-matches-btn" class="btn btn-success pull-right">
+        Search all possibilities 
+    </button>
     </fieldset>
 </form>
 
