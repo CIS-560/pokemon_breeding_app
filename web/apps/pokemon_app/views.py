@@ -8,3 +8,4 @@ def app_entry(request):
     pokemons = Pokemon.objects.all()
     #moves = Moves.objects.all()
     return render(request, '../templates/poke_test.html', {'pokemons': pokemons})
+
