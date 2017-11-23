@@ -1,5 +1,10 @@
 from django.shortcuts import render
+from .models import Pokemon
+from .models import Moves
+
 
 # Create your views here.
 def app_entry(request):
-	return render(request, '../templates/base.html' )
+    pokemons = Pokemon.objects.all()
+    #moves = Moves.objects.all()
+    return render(request, '../templates/poke_test.html', {'pokemons': pokemons})

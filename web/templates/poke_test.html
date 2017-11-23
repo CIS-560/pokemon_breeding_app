@@ -1,0 +1,23 @@
+<!-- Compressed CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css">
+
+{% block content %}
+<form action="/pairs" method="GET">
+
+    <fieldset>
+    
+
+    <div class="form-group">
+        <!-- Autosearch all pokemon -->
+        <label for="pokemon-select">Choose your desired pokemon</label>
+        <select>
+            <option value="not_selected">&lt;Not Selected&gt;</option>
+            {% for pokemon in pokemons %}
+                <option>{{ pokemon.name }}</option>
+            {% endfor %}
+        </select>
+        </div>
+        
+        
+{% endblock %}
+
