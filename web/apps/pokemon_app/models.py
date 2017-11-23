@@ -1,74 +1,34 @@
 from django.db import models
 
-# https://stackoverflow.com/questions/41972589/django-model-primary-key-as-a-pair
-
-
 class Pokemon(models.Model):
     number = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=15)
     description = models.CharField(max_length=1000)
     is_evolved = models.BooleanField(default=False)
-
+    type = models.ManyToManyField(Type)
+    level_up_moves = models.ManyToManyField(Moves, through='LevelUpMove')
+    egg_moves = models.ManyToManyField(Moves, related_name='%(class)s_egg_move')
+    genders = models.ManyToManyField(Genders)
+    egg_groups = models.ManyToManyField(EggGroup)
 
 class Type(models.Model):
     type_num = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=20)
 
-# on delete cascade?
-
-
-class PokeType(models.Model):
-    poke_number = models.ManyToManyField(Pokemon)
-    # pokemon can have up to two types
-    # types can have lots of pokemon associated with them
-    type_num = models.ManyToManyField(Type)
-
-    # unique_together doesn't work on Many-To_Many Fields
-    # class Meta:
-    #    unique_together = ("poke_number", "type_num")
-
-
 class Moves(models.Model):
     move_num = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=20)
 
-# has two primary keys
-
-
-class LevelUpMoves(models.Model):
-    # a pokemon can have many levelupmoves that it can learn
-    # a levelupmove can be tied to many pokemon (some can learn same moves)
-    poke_number = models.ManyToManyField(Pokemon)
-
-    # unsure about this one, diagram says many-to-many
-    # but I would assume one-to-one
-    # a move has one number associated with it
-    # many to many. one to one. or many to one?
-    move_num = models.ManyToManyField(Moves)
+#this is an example of an intermediate table in django, 
+#it refers to the instace of specifc pokemon, levelup_move
+#and it provides additional information about Level_move
+class LevelUpMove(models.Model):
+    poke_number = models.ForeignKey(Pokemon)
+    move_num = models.ForeignKey(Moves)
     level = models.IntegerField()  # this doesn't need to be unique
 
-    # class Meta:
-    #     unique_together("poke_number", "move_num")
 
-# this one also has two primary keys
-
-
-class EggMoves(models.Model):
-    poke_number = models.ManyToManyField(Pokemon)
-
-    # I am also not sure about this one too
-    # i would assume it is one-to-one but the E/R diagram suggests many-to-many
-    move_num = models.ManyToManyField(Moves)
-
-    # class Meta:
-    #     unique_together("poke_number", "move_num")
-
-
-class PokeGender(models.Model):
-    # a pokemon can have many genders
-    # a gender can have many pokemons associated to it
-    poke_number = models.ManyToManyField(Pokemon)  # , primary_key=True)
-
+class Gender(models.Model):
     GENDERS = (
         ('M', 'Male'),
         ('F', 'Female'),
@@ -80,14 +40,6 @@ class PokeGender(models.Model):
 class EggGroup(models.Model):
     name = models.CharField(max_length=15, primary_key=True)
     can_breed = models.BooleanField(default=False)
-
-
-class PokeEggGroup(models.Model):
-    poke_number = models.ManyToManyField(Pokemon)
-    name = models.ManyToManyField(EggGroup)
-
-    # class Meta:
-    #     unique_together("poke_number", "name")
 
 
 class User(models.Model):
