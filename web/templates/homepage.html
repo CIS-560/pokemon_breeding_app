@@ -15,13 +15,10 @@
         <label for="pokemon-select">Choose your desired pokemon</label>
         <select name="pokemon" id="pokemon-select" class="form-control">
             <option value="not_selected">&lt;Not Selected&gt;</option>
-   <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-            {% for pokemon, pokemon_count in pokemons %}
-                <option value="{{ pokemon|title }}">{{ pokemon|title }} ({{ pokemon_count }})</option>
-            {% endfor %}
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
         </select>
     </div>
     <div class="form-group">
