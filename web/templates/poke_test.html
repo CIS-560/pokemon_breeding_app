@@ -1,0 +1,23 @@
+<!-- Compressed CSS -->
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="/pairs" method="GET">
+
+    <fieldset>
+    
+
+    <div class="form-group">
+        <!-- Autosearch all pokemon -->
+        <label for="pokemon-select">Choose your desired pokemon</label>
+        <select class="small-6 cell">
+            <option value="not_selected">&lt;Not Selected&gt;</option>
+            {% for pokemon in pokemons %}
+                <option>{{ pokemon.name }}</option>
+            {% endfor %}
+        </select>
+        </div>
+        
+        
+{% endblock %}
+

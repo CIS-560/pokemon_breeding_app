@@ -1,0 +1,84 @@
+[
+  {
+    "model": "pokemon_app.Pokemon",
+    "fields":{
+      "number": "1",
+      "name": "test_poke_1",
+      "description": "lalala",
+      "is_evolved": "False"
+    }
+  },
+  
+  {
+    "model": "pokemon_app.Pokemon",
+    "fields":{
+      "number": "10",
+      "name": "test_poke_2",
+      "description": "ok",
+      "is_evolved": "True"
+    }
+  },
+  
+  {
+    "model": "pokemon_app.Pokemon",
+    "fields":{
+      "number": "100",
+      "name": "test_poke_3",
+      "description": "thats nice",
+      "is_evolved": "True"
+    }
+  },
+
+
+  {
+    "model": "pokemon_app.Type",
+    "fields":{
+      "type_num": "2",
+      "name": "test_type"
+    }
+  },
+
+  {
+    "model": "pokemon_app.PokeType",
+    "fields":{
+      "poke_number": "1",
+      "type_num": "2"
+    }
+  },
+
+  {
+    "model": "pokemon_app.Moves",
+    "fields":{
+      "move_num": "3",
+      "name": "test_move_1"
+    }
+  },
+  {
+    "model": "pokemon_app.Moves",
+    "fields":{
+      "move_num": "4",
+      "name": "test_move_2"
+    }
+  },
+
+  {
+    "model": "pokemon_app.LevelUpMoves",
+    "fields":{
+      "poke_number": "1",
+      "move_num": "3",
+      "level": "20"
+    }
+  },
+  
+{
+    "model": "pokemon_app.EggMoves",
+    "fields":{
+      "poke_number": "10",
+      "move_num": "4",
+    }
+  },
+  
+
+
+  
+]
