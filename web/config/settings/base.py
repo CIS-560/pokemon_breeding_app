@@ -4,7 +4,7 @@ from .secret import Secret
 
 BASE_DIR = Path(__file__).ancestor(3)
 MEDIA_ROOT = "/media"
-STATIC_ROOT = "/static"
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
