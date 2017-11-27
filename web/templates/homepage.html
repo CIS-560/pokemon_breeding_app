@@ -8,22 +8,24 @@
     <div class="row">
         <div class="poke-pic"> 
         </div>
-
-        <div class="large-4 columns" id="select-pokemon">
-            <label for="select-pokemon">Input your desired Pokemon</label> 
-            <input id="select-pokemon" type="text"/>
-        </div>
-        <div class="large-4 columns" id="select-egg-move">
-            <!-- combo box all egg moves -->
-            <label for="egg-move-select">Choose your desired egg move</label>
-            <select name="egg-move" id="egg-move-select" class="form-control">
+            <!-- select pokemon -->
+            <label for="pokemon-select">Choose your Pokemon</label>
+            <select name="egg-move" id="pokemon-select" class="large-4 column">
                 <option value="not_selected">&lt;Select a Pokemon First&gt;</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
             </select>
-        </div>
+            <!-- combo box all egg moves corresponding to that pokemon -->
+            <label for="egg-move-select">Choose your desired egg move</label>
+            <select name="egg-move" id="egg-move-select" class="large-4 column">
+                <option value="not_selected">&lt;Select a Pokemon First&gt;</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
     </div>
     <br>
     <button type="button" id="search-matches-btn" class="button success">
