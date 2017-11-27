@@ -2919,7 +2919,7 @@ label {
 
 fieldset {
   margin: 0;
-  padding: 0;
+  padding: 15px;
   border: 0; }
 
 legend {
