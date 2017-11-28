@@ -1,6 +1,3 @@
-{% block optional_scripts %}
-
-{% endblock %}
 
 {% extends 'base.html' %}
 
@@ -18,19 +15,14 @@
             <select name="pokemon" id="pokemon-select" class="large-4 column">
                 <option value="not_selected">&lt;Select a Pokemon First&gt;</option>
                 <!-- for loop - use template language to set value to pokemon directory and option -->
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
+                {% for pokemon in pokemons %}
+                    <option value="{% static img/pokemon/{{ pokemon.name }}.jpg %}">{{ pokemon.name }}</option>
+                {% endfor %}
             </select>
             <!-- combo box all egg moves corresponding to that pokemon -->
             <label for="egg-move-select">Choose your desired egg move</label>
             <select name="egg-move-select" id="egg-move-select" class="large-4 column">
                 <option value="not_selected">&lt;Select a Pokemon First&gt;</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
             </select>
     </div>
     <br>

@@ -9,3 +9,6 @@ def app_entry(request):
     #moves = Moves.objects.all()
     return render(request, '../templates/homepage.html', {'pokemons': pokemons})
 
+def egg_moves(request):
+    egg_moves = Pokemon.objects.get()
+
