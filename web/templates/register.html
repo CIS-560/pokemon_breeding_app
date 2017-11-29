@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <form class="log-in-form" method="post" >
+    <h4 class="text-center">Register with you email address</h4>
+    {% csrf_token %}
+        {{ form.as_p }}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/login_now.css' %}">
+  <p>
+      <input type="submit" class="button expanded" name='register' value="Register"></input> 
+  </p>
+</form>
+
+{% endblock %}
