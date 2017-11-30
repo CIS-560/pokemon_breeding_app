@@ -22,5 +22,8 @@ if settings.DEBUG:
 normalpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.app_entry, name='app_entry'),
+    url(r'^results/', views.results, name='results'),
+    
+
 ]
 urlpatterns += normalpatterns
