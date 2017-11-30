@@ -25,6 +25,7 @@ normalpatterns = [
     url(r'^register/', views.register,name ='register' ),
     url(r'^$', views.app_entry, name='app_entry'),
     url(r'^results/', views.results, name='results'),
+    url(r'^favorites/', views.favorites, name='favorites'),
     
 
 ]

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import Pokemon
-from .models import Moves
+from .models import Moves, HistoryTrios
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login as auth_login, authenticate
 from django.shortcuts import redirect 
@@ -41,4 +41,9 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, '../templates/register.html', {'form': form})
+
+def favorites(request):
+    history_trios = HistoryTrios.objects.all()
+    #moves = Moves.objects.all()
+    return render(request, '../templates/favorites.html', {'history_trios': history_trios})
 
