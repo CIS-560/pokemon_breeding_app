@@ -11,6 +11,14 @@ def app_entry(request):
     pokemons = Pokemon.objects.all()
     #moves = Moves.objects.all()
     return render(request, '../templates/homepage.html', {'pokemons': pokemons})
+
+def results(request):
+    #male pokemon: male pokemon & ditto 
+    #female pokemon: female pokemon or ungendered (if breeding with a ditto)
+    female_pokemons = Pokemon.objects.filter(genders=2)
+    male_pokemons = Pokemon.objects.filter(genders=1)
+    return render(request, '../templates/results.html', {'male_pokemon':male_pokemons, 'female_pokemon': female_pokemons})
+
 def login(request):
     if request.POST:
         if 'login' in request.POST:
@@ -19,6 +27,7 @@ def login(request):
             return HttpResponseRedirect('/youregistered')
     else:
         return render(request, '../templates/login.html')
+      
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -32,3 +41,4 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, '../templates/register.html', {'form': form})
+

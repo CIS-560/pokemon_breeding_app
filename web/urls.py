@@ -24,5 +24,8 @@ normalpatterns = [
     url(r'^login/', auth_views.login,{'template_name': 'login.html'}, name ='login'),
     url(r'^register/', views.register,name ='register' ),
     url(r'^$', views.app_entry, name='app_entry'),
+    url(r'^results/', views.results, name='results'),
+    
+
 ]
 urlpatterns += normalpatterns
