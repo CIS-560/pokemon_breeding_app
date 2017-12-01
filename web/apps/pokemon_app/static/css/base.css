@@ -79,3 +79,7 @@
 body {
     overflow:hidden;
 }
+
+#search-parents-button {
+    max-width: 150px;
+}
