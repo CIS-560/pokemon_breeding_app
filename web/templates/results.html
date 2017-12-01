@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load staticfiles %}
+{% block optional_scripts %}
+    <script src="{% static 'js/results.js' %}" type="text/javascript" charset="utf-8"></script>
+{% endblock %}
 {% block content %}
-<script>
-$(document).ready(function(){
-    $(document).foundation();});
-</script>
+
+<div data-closaable class="alert-box callout warning" id="fav-callout">
+    <i class="fa fa-star"></i>{{ pokemon_1.name }} + {{ pokemon_2.name }} has been added to your Favorites.
+    <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+        <span aria-hidden="true">&CircleTimes;</span> 
+    </button>
+</div>
 
 <div class="grid-x">
     <div class="cell"> 
@@ -52,6 +60,9 @@ $(document).ready(function(){
                     </tr>
                 </tbody>
                 </table>
+                <button type="button" class="hollow button secondary" id="add-to-favorites">
+                    Add To Favorites
+                </button>
             </div>
             </li>
         </ul>
