@@ -23,7 +23,7 @@ function pokemonSelectionChanged() {
         pokemon = getFirstWord(str);
     });
 
-    alert(str + '\n' + pokemon + '\n' + test);
+    //    alert(str + '\n' + pokemon + '\n' + test);
 
     $.ajax({
         url: '/egg_moves/',
@@ -34,7 +34,6 @@ function pokemonSelectionChanged() {
             console.log(err);
         },
         success: function(result) {
-            alert("hi");
             setupEggMoves(result.egg_moves);
             console.log(result);
         }
