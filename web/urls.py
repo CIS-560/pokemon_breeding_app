@@ -22,5 +22,9 @@ if settings.DEBUG:
 normalpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.app_entry, name='app_entry'),
+    url(r'^egg_moves/$', views.egg_moves, name='egg_moves')
 ]
+
 urlpatterns += normalpatterns
+
+

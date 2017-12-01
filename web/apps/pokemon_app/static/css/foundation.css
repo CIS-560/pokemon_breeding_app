@@ -465,7 +465,7 @@ textarea {
 
 select {
   box-sizing: border-box;
-  width: 100%;
+/*  width: 100%;*/
   border-radius: 0; }
 
 .map_canvas img,

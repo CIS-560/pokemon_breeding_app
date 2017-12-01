@@ -33,6 +33,7 @@ class Pokemon(models.Model):
     egg_moves = models.ManyToManyField(Moves, related_name='%(class)s_egg_move')
     genders = models.ManyToManyField(Gender)
     egg_groups = models.ManyToManyField(EggGroup)
+#    url = models.CharField(max_length=1000)
 
 
 #this is an example of an intermediate table in django, 
