@@ -4,4 +4,5 @@ web/config/settings/__pycache__/
 web/__pycache__
 static/
 .DS_Store/
+web/config/__pycache__/
 web/apps/pokemon_app/migrations/__pycache__/
