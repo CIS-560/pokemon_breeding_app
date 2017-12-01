@@ -24,8 +24,12 @@
 
       <h1 class="subnav-hero-headline">Pokemon Egg App <small>gen 2</small></h1>
       <ul class="subnav-hero-subnav">
-        <li><a href="#">Breeding Test</a></li>
-        <li><a href="#" class="is-active">Favorites</a></li>
+        <li><a href="/">Breeding Test</a></li>
+        {% if user.is_authenticated %}
+        <li> <a href="/favorites" class="is-active">Favorites</a></li>
+        {% else %}
+        <li> <a href="/login" class="is-active">Login</a></li>
+        {% endif %}
       </ul>
       </header>
       <div class="content container">
