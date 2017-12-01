@@ -65,3 +65,13 @@
     cursor:default;
     z-index:1001 !important
 }
+
+#poke-pic {
+    max-width: 130px;
+    height: auto;
+    padding: 5px;
+}
+
+select {
+    float: left;
+}
