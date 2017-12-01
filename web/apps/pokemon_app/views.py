@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import Pokemon
-from .models import Moves, HistoryTrios
+from .models import Moves #, HistoryTrios
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login as auth_login, authenticate
+from .resources import TypeResource
 from django.shortcuts import redirect 
+from tablib import Dataset
 
 # Create your views here.
 def app_entry(request):
@@ -18,6 +20,19 @@ def results(request):
     female_pokemons = Pokemon.objects.filter(genders=2)
     male_pokemons = Pokemon.objects.filter(genders=1)
     return render(request, '../templates/results.html', {'male_pokemon':male_pokemons, 'female_pokemon': female_pokemons})
+
+def simple_upload(request):
+    if request.method == 'POST':
+        type_resource = TypeResource()
+        dataset = Dataset()
+        new_types = request.FILES['myfile']
+
+        imported_data = dataset.csv.load(new_types.read())
+        result = type_resource.import_data(dataset, dry_run=True)  # Test the data import
+
+        if not result.has_errors():
+            type_resource.import_data(dataset.csv, dry_run=False)  # Actually import now
+    return render(request, '../templates/import.html')
 
 def login(request):
     if request.POST:
