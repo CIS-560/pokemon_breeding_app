@@ -67,11 +67,15 @@
 }
 
 #poke-pic {
-    max-width: 130px;
+    max-width: 200px;
     height: auto;
     padding: 5px;
 }
 
-select {
+#egg-move-select {
     float: left;
+}
+
+body {
+    overflow:hidden;
 }
