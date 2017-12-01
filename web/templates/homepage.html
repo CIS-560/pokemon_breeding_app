@@ -4,7 +4,7 @@
 {% load staticfiles %}
 {% block content %}
 
-<form id="form-inline" data-abide="ajax">
+<form id="form-inline" data-abide="ajax" action="/results" method="GET">
     {% csrf_token %}
     <fieldset id="desired-poke">
     <!-- Autocomplete search all pokemon -->
@@ -33,7 +33,7 @@
             </select>
             </div>
             <br/>
-    <button type="button" id="search-parents-button" class="button success">
+            <button type="submit" id="search-parents-button" class="button success">
         Search all possibilities 
     </button>
         </div>
