@@ -1,6 +1,7 @@
-/web/__pycache__/
-/web/apps/pokemon_app/__pycache__/
-/web/config/settings/__pycache__/
+web/__pycache__/
+web/apps/pokemon_app/__pycache__/
+web/config/settings/__pycache__/
 web/__pycache__
 static/
 .DS_Store/
+web/apps/pokemon_app/migrations/__pycache__/
