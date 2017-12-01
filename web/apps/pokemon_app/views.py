@@ -31,7 +31,8 @@ def results(request):
     #female pokemon: female pokemon or ungendered (if breeding with a ditto)
     female_pokemons = Pokemon.objects.filter(genders=2)
     male_pokemons = Pokemon.objects.filter(genders=1)
-    return render(request, '../templates/results.html', {'male_pokemon':male_pokemons, 'female_pokemon': female_pokemons})
+    pokemons = zip(female_pokemons, male_pokemons)
+    return render(request, '../templates/results.html', {'pokemons':pokemons})
 
 def login(request):
     if request.POST:
