@@ -1,23 +1,13 @@
+
 {% extends 'base.html' %}
-{% load static %}
-{% load staticfiles %}
-{% block optional_scripts %}
-    <script src="{% static 'js/results.js' %}" type="text/javascript" charset="utf-8"></script>
-{% endblock %}
 {% block content %}
-
-<div data-closaable class="alert-box callout warning" id="fav-callout">
-    <i class="fa fa-star"></i>{{ pokemon_1.name }} + {{ pokemon_2.name }} has been added to your Favorites.
-    <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-        <span aria-hidden="true">&CircleTimes;</span> 
-    </button>
-</div>
-
-<div class="grid-x">
-    <div class="cell"> 
-    <h4>Male/Ditto Possibilities</h4>
+<script src="/static/js/foundation.accordion.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/js/foundation.core.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/js/results.js" type="text/javascript" charset="utf-8"></script>
+<div class="row content">
+  <div class="large-12 columns home_middle">
+    <ul class="accordion" data-accordion data-allow-all-closed="true">
     {% for pokemon_1, pokemon_2 in pokemons %}
-        <ul class="accordion" data-accordion data-allow-all-closed="true" data-multi-expand="true">
             <li class="accordion-item" data-accordion-item>
                 <a href="#" class="accordion-title">{{ pokemon_1.name }} + {{ pokemon_2.name }}</a>
             <div class="accordion-content" data-tab-content>
@@ -65,7 +55,13 @@
                 </button>
             </div>
             </li>
-        </ul>
-    {% endfor %}
-  </div>
+            {% endfor %}
+      </ul>
+    </div>
+</div>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/foundation/js/foundation.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
 {% endblock %}
