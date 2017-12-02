@@ -19,7 +19,7 @@
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 250px;
+  height: 150px;
 }
 
 .subnav-hero-section .subnav-hero-headline {
@@ -64,4 +64,22 @@
     position:absolute;
     cursor:default;
     z-index:1001 !important
+}
+
+#poke-pic {
+    max-width: 200px;
+    height: auto;
+    padding: 5px;
+}
+
+#egg-move-select {
+    float: left;
+}
+
+body {
+    overflow:hidden;
+}
+
+#search-parents-button {
+    max-width: 150px;
 }
