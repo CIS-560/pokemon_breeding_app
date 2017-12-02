@@ -66,10 +66,10 @@ def simple_upload(request):
                 the_level = int(column_3_dataframe.at[value, 'level'])
                 LevelUpMove.objects.create(poke_number= poke, move_num=move, level=the_level)
                 print('added ' + str(col1_val) + ' ' + str(col2_val)) 
-        elif check_names == ('poke_num', 'egg_move_num'):
+        elif check_names == ('poke_num', 'egg_move_name'):
             for value in range(csv.shape[0]):
                 col1_val = int(column_1_dataframe.at[value,col_names[0]])
-                col2_val = int(column_2_dataframe.at[value,col_names[1]])
+                col2_val = str(column_2_dataframe.at[value,col_names[1]])
                 Pokemon.objects.get(number= col1_val).egg_moves.add(col2_val)
                 print('added ' + str(col1_val) + ' ' + str(col2_val)) 
         elif check_names == ('poke_num', 'genders'):
