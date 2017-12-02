@@ -36,13 +36,17 @@ class Pokemon(models.Model):
     egg_groups = models.ManyToManyField(EggGroup)
 #    url = models.CharField(max_length=1000)
 
+class PokemonType(models.Model):
+    #id auto-generated
+    poke_num = models.ForeignKey(Pokemon)
+    type_num = models.ForeignKey(Type)
 
 #this is an example of an intermediate table in django, 
 #it refers to the instace of specifc pokemon, levelup_move
 #and it provides additional information about Level_move
 class LevelUpMove(models.Model):
-    poke_number = models.ForeignKey(Pokemon)
-    move_num = models.ForeignKey(Moves)
+    pokemon = models.ForeignKey(Pokemon)
+    move = models.ForeignKey(Moves)
     level = models.IntegerField()  # this doesn't need to be unique
 
 class HistoryTrios(models.Model):
