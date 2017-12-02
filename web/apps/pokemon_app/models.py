@@ -35,6 +35,10 @@ class Pokemon(models.Model):
     genders = models.ManyToManyField(Gender)
     egg_groups = models.ManyToManyField(EggGroup)
 
+class PokemonType(models.Model):
+    #id auto-generated
+    poke_num = models.ForeignKey(Pokemon)
+    type_num = models.ForeignKey(Type)
 
 #this is an example of an intermediate table in django, 
 #it refers to the instace of specifc pokemon, levelup_move
