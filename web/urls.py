@@ -26,7 +26,9 @@ normalpatterns = [
     url(r'^$', views.app_entry, name='app_entry'),
     url(r'^egg_moves/$', views.egg_moves, name='egg_moves'),
     url(r'^results/', views.results, name='results'),
-    url(r'^favorites/', views.favorites, name='favorites')
+    url(r'^simple_upload/', views.simple_upload, name='simple_upload'),
+    url(r'^upload/', views.parse, name='parse'),
+    url(r'^favorites/', views.favorites, name='favorites'),
 ]
 
 urlpatterns += normalpatterns
