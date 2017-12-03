@@ -8,13 +8,14 @@ from .resources import TypeResource
 from django.shortcuts import redirect 
 from tablib import Dataset
 import pandas as pd 
+import ast
 
 # Create your views here.
 def app_entry(request):
     pokemons = Pokemon.objects.all()
     #moves = Moves.objects.all()
     return render(request, '../templates/homepage.html', {'pokemons': pokemons})
-@csrf_exempt
+
 def egg_moves(request):
     pokemon = request.POST['pokemon']
     
@@ -30,8 +31,8 @@ def egg_moves(request):
 def results(request):
     #male pokemon: male pokemon & ditto 
     #female pokemon: female pokemon or ungendered (if breeding with a ditto)
-    female_pokemons = Pokemon.objects.filter(genders=2)
-    male_pokemons = Pokemon.objects.filter(genders=1)
+    female_pokemons = Pokemon.objects.exclude(female_ratio= 0)
+    male_pokemons = Pokemon.objects.exclude(male_ratio =0 )
     return render(request, '../templates/results.html', {'male_pokemon':male_pokemons, 'female_pokemon': female_pokemons})
 
 def simple_upload(request):
@@ -67,7 +68,7 @@ def simple_upload(request):
                 col1_val = int(column_1_dataframe.at[value,col_names[0]])
                 col2_val = int(column_2_dataframe.at[value,col_names[1]])
                 Pokemon.objects.get(number= col1_val).type.add(col2_val)
-                print('added ' + str(col1_val) + ' ' + str(col2_val)) 
+                print('poke_typ added ' + str(col1_val) + ' ' + str(col2_val)) 
         elif check_names == ('poke_num', 'level_up_move_num'):
             column_3_dataframe = csv[['level']]
             for value in range(csv.shape[0]):
@@ -76,27 +77,45 @@ def simple_upload(request):
                 poke = Pokemon.objects.get(number= col1_val)
                 move = Moves.objects.get(move_num= col2_val)
                 the_level = int(column_3_dataframe.at[value, 'level'])
-                LevelUpMove.objects.create(poke_number= poke, move_num=move, level=the_level)
-                print('added ' + str(col1_val) + ' ' + str(col2_val)) 
-        elif check_names == ('poke_num', 'egg_move_name'):
+                LevelUpMove.objects.create(pokemon = poke, move=move, level=the_level)
+                print('poke_level_up_move added ' + str(col1_val) + ' ' + str(col2_val)) 
+        elif check_names == ('poke_num', 'egg_move_num'):
             for value in range(csv.shape[0]):
                 col1_val = int(column_1_dataframe.at[value,col_names[0]])
                 col2_val = str(column_2_dataframe.at[value,col_names[1]])
                 Pokemon.objects.get(number= col1_val).egg_moves.add(col2_val)
-                print('added ' + str(col1_val) + ' ' + str(col2_val)) 
-        elif check_names == ('poke_num', 'genders'):
+                print('poke_egg_move added ' + str(col1_val) + ' ' + str(col2_val)) 
+        elif check_names == ('number', 'name'):
+            column_3_dataframe = csv[['description']]
+            column_4_dataframe = csv[['is_evolved']]
+            column_5_dataframe = csv[['male_ratio']]
+            column_6_dataframe = csv[['female_ratio']]
+            column_7_dataframe = csv[['picture']]
             for value in range(csv.shape[0]):
                 col1_val = int(column_1_dataframe.at[value,col_names[0]])
-                col2_val = int(column_2_dataframe.at[value,col_names[1]])
-                Pokemon.objects.get(number= col1_val).genders.add(col2_val)
-                print('added ' + str(col1_val) + ' ' + str(col2_val)) 
+                col2_val = str(column_2_dataframe.at[value,col_names[1]])
+                col3_val = str(column_3_dataframe.at[value,'description'])
+                
+                val = str(column_4_dataframe.at[value,'is_evolved'])
+                col4_val = str_to_bool(val)
+                col5_val = str(column_5_dataframe.at[value,'male_ratio'])
+                col6_val = str(column_6_dataframe.at[value,'female_ratio'])
+                col7_val = str(column_7_dataframe.at[value,'picture'])
+                Pokemon.objects.create(number= col1_val, name=col2_val, description=col3_val, is_evolved=col4_val, male_ratio= col5_val, female_ratio=col6_val, picture=col7_val)
+                print('pokemon added ' + str(col1_val) + ' ' + str(col2_val)) 
         else:
             for value in range(csv.shape[0]):
                 col1_val = int(column_1_dataframe.at[value,col_names[0]])
-                col2_val = int(column_2_dataframe.at[value,col_names[1]])
+                col2_val = str(column_2_dataframe.at[value,col_names[1]])
                 Pokemon.objects.get(number= col1_val).egg_groups.add(col2_val)
-                print('added ' + str(col1_val) + ' ' + str(col2_val)) 
+                print('poke_egg_group_added ' + str(col1_val) + ' ' + str(col2_val)) 
     return render(request, '../templates/import.html')
+
+def str_to_bool(s):
+    if s == 'True':
+         return True
+    elif s == 'False':
+         return False
 
 def login(request):
     if request.POST:
