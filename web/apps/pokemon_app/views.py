@@ -16,7 +16,7 @@ def app_entry(request):
     pokemons = Pokemon.objects.all()
     #moves = Moves.objects.all()
     return render(request, '../templates/homepage.html', {'pokemons': pokemons})
-
+@csrf_exempt
 def egg_moves(request):
     pokemon = request.POST['pokemon']
     
