@@ -1,9 +1,9 @@
-
 {% extends 'base.html' %}
 {% load static %}
 {% load staticfiles %}
 {% block content %}
 
+    <script src="/static/js/base.js" type="text/javascript" charset="utf-8"></script>
 <form id="form-inline" data-abide="ajax" action="/results" method="GET">
     {% csrf_token %}
     <fieldset id="desired-poke">

@@ -31,9 +31,11 @@ def egg_moves(request):
 def results(request):
     #male pokemon: male pokemon & ditto 
     #female pokemon: female pokemon or ungendered (if breeding with a ditto)
-    female_pokemons = Pokemon.objects.exclude(female_ratio= 0)
-    male_pokemons = Pokemon.objects.exclude(male_ratio =0 )
-    return render(request, '../templates/results.html', {'male_pokemon':male_pokemons, 'female_pokemon': female_pokemons})
+    female_pokemons = Pokemon.objects.filter(genders=2)
+    male_pokemons = Pokemon.objects.filter(genders=1)
+    pokemons = zip(female_pokemons, male_pokemons)
+    return render(request, '../templates/results.html', {'pokemons':pokemons})
+
 
 def simple_upload(request):
     if request.method == 'POST':
