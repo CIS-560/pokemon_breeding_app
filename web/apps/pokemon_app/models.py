@@ -10,19 +10,10 @@ class Moves(models.Model):
     move_num = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=20)
 
-class Gender(models.Model):
-    GENDERS = (
-        ('M', 'Male'),
-        ('F', 'Female'),
-        ('X', 'Genderless'),
-    )
-    gender = models.CharField(max_length=1, choices=GENDERS)
 
 class EggGroup(models.Model):
     name = models.CharField(max_length=15, primary_key=True)
     can_breed = models.BooleanField(default=False)
-
-
 
 class Pokemon(models.Model):
     number = models.IntegerField(primary_key=True)
@@ -30,9 +21,11 @@ class Pokemon(models.Model):
     description = models.CharField(max_length=1000)
     is_evolved = models.BooleanField(default=False)
     type = models.ManyToManyField(Type)
+    female_ratio = models.FloatField(default= 0) 
+    male_ratio = models.FloatField(default= 0) 
+    picture = models.CharField(max_length=100, default='picture')
     level_up_moves = models.ManyToManyField(Moves, through='LevelUpMove')
     egg_moves = models.ManyToManyField(Moves, related_name='%(class)s_egg_move')
-    genders = models.ManyToManyField(Gender)
     egg_groups = models.ManyToManyField(EggGroup)
 #    url = models.CharField(max_length=1000)
 
