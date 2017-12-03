@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login as auth_login, authenticate
 from .resources import TypeResource
 from django.shortcuts import redirect 
+from django.views.decorators.csrf import csrf_exempt
 from tablib import Dataset
 import pandas as pd 
 import ast
@@ -15,7 +16,7 @@ def app_entry(request):
     pokemons = Pokemon.objects.all()
     #moves = Moves.objects.all()
     return render(request, '../templates/homepage.html', {'pokemons': pokemons})
-
+@csrf_exempt
 def egg_moves(request):
     pokemon = request.POST['pokemon']
     
