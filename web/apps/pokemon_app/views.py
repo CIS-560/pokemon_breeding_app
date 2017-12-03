@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login as auth_login, authenticate
 from .resources import TypeResource
 from django.shortcuts import redirect 
+from django.views.decorators.csrf import csrf_exempt
 from tablib import Dataset
 import pandas as pd 
 import ast
