@@ -4,8 +4,6 @@ from .models import Type
 from .models import EggGroup 
 from .models import Moves
 from .models import LevelUpMove , HistoryTrios, PokemonType
-from import_export.admin import ImportExportModelAdmin
-#from .resources import PokemonResource, TypeResource, EggGroupResource, LevelUpMoveResource, MovesResource , HistoryTriosResource
 
 # Register your models here.
 admin.site.register(Pokemon)
@@ -16,24 +14,3 @@ admin.site.register(Moves)
 admin.site.register(PokemonType)
 admin.site.register(HistoryTrios)
 
-# @admin.register(Pokemon)
-# @admin.register(EggGroup)
-# @admin.register(LevelUpMove)
-# @admin.register(HistoryTrios)
-# @admin.register(Moves)
-# class Pokemon(ImportExportModelAdmin):
-#     import_id_fields = ('number')
-# class Type(ImportExportModelAdmin):
-#     model = Type
-#     exclude = ('id', )
-#     import_id_fields = ('type_num', )
-#     skip_unchanged = True
-#     fields = ['type_num', 'name']
-# class EggGroup(ImportExportModelAdmin):
-#     pass
-# class LevelUpMove(ImportExportModelAdmin):
-#     pass
-# class HistoryTrios(ImportExportModelAdmin):
-#     pass
-# class Moves(ImportExportModelAdmin):
-#     pass

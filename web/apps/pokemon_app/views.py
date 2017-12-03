@@ -4,7 +4,6 @@ from .models import Pokemon, Type, LevelUpMove
 from .models import Moves #, HistoryTrios
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login as auth_login, authenticate
-from .resources import TypeResource
 from django.shortcuts import redirect 
 from django.views.decorators.csrf import csrf_exempt
 from tablib import Dataset
@@ -17,6 +16,7 @@ def app_entry(request):
     #moves = Moves.objects.all()
     return render(request, '../templates/homepage.html', {'pokemons': pokemons})
 
+@csrf_exempt
 def egg_moves(request):
     pokemon = request.POST['pokemon']
     
@@ -40,12 +40,7 @@ def results(request):
 
 def simple_upload(request):
     if request.method == 'POST':
-        type_resource = TypeResource()
-        dataset = Dataset()
         new_types = request.FILES['myfile']
-
-        #imported_data = dataset.csv.load(new_types.read())
-        result = type_resource.import_data(dataset, dry_run=True)  # Test the data import
 
         #django.setup()
         csv = pd.read_csv(request.FILES['myfile'])

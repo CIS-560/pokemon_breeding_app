@@ -3,7 +3,6 @@ psycopg2
 gunicorn==19.7.1
 unipath>=1.1
 django-allauth
-django-import-export
-django-adaptors
 django-csvimport
 pandas
+tablib
