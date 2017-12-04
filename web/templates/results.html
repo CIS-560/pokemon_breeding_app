@@ -21,37 +21,73 @@
                   <thead><tr>
                       <th width="200">Details</th>
                       <th>Male/Ditto</th>
-                      <th>Female/Genderless</th>
                     </tr></thead>
                   <tbody>
                     <tr>
                         <td>Name</td>
                         <td>{{ pokemon_1.name }}</td>
-                        <td>{{ pokemon_2.name }}</td>
                     </tr>
                     <tr>
                         <td>Pokemon Number</td>
                         <td>{{ pokemon_1.number }}</td>
-                        <td>{{ pokemon_2.number }}</td>
                     </tr>
                     <tr>
                         <td>Classification</td>
                         <td>{{ pokemon_1.description }}</td>
-                        <td>{{ pokemon_2.description }}</td>
                     </tr>
                     <tr>
                         <td>Type</td>
                         <td>{{ pokemon_1.type }}</td>
-                        <td>{{ pokemon_2.type }}</td>
                     </tr>
                     <tr>
                         <td>Gender</td>
                         <td>{{ pokemon_1.genders }}</td>
-                        <td>{{ pokemon_2.genders }}</td>
                     </tr>
                     <tr>
                         <td>Egg Group(s)</td>
                         <td>{{ pokemon_1.egg_groups }}</td>
+                    </tr>
+                </tbody>
+                </table>
+                <button type="button" 
+                    class="hollow button secondary" 
+                    id="add-to-favorites" 
+                    onclick="addToFavorites()">
+                    Add To Favorites
+                </button>
+            </div>
+            </li>
+            <li class="accordion-item" data-accordion-item>
+                <a href="#" class="accordion-title">{{ pokemon_1.name }} + {{ pokemon_2.name }}</a>
+            <div class="accordion-content" data-tab-content>
+                <table class="hover">
+                  <thead><tr>
+                      <th width="200">Details</th>
+                      <th>Female/Genderless</th>
+                    </tr></thead>
+                  <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{ pokemon_2.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Pokemon Number</td>
+                        <td>{{ pokemon_2.number }}</td>
+                    </tr>
+                    <tr>
+                        <td>Classification</td>
+                        <td>{{ pokemon_2.description }}</td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td>{{ pokemon_2.type }}</td>
+                    </tr>
+                    <tr>
+                        <td>Gender</td>
+                        <td>{{ pokemon_2.genders }}</td>
+                    </tr>
+                    <tr>
+                        <td>Egg Group(s)</td>
                         <td>{{ pokemon_2.egg_groups }}</td>
                     </tr>
                 </tbody>

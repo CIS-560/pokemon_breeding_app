@@ -1,0 +1,16 @@
+name,can_breed
+monster,True
+water1,True
+bug,True
+flying,True
+field,True
+fairy,True
+grass,True
+human-like,True
+water3,True
+mineral,True
+amorphous,True
+water2,True
+ditto,True
+dragon,True
+undiscovered,False

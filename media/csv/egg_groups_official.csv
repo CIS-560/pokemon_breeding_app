@@ -1,0 +1,16 @@
+name,can_breed
+monster,TRUE
+water1,TRUE
+bug,TRUE
+flying,TRUE
+ground,TRUE
+fairy,TRUE
+plant,TRUE
+human-like,TRUE
+water3,TRUE
+mineral,TRUE
+amorphous,TRUE
+water2,TRUE
+ditto,TRUE
+dragon,TRUE
+undiscovered,FALSE
