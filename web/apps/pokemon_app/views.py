@@ -6,9 +6,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login as auth_login, authenticate
 from django.shortcuts import redirect 
 from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
 from tablib import Dataset
 import pandas as pd 
 import ast
+import json
 
 # Create your views here.
 def app_entry(request):
