@@ -1,6 +1,15 @@
 /web/__pycache__/urls.cpython-35.pyc 
 /web/apps/pokemon_app/__pycache__/views.cpython-35.pyc
 /web/config/settings/__pycache__/base.cpython-35.pyc
-
-web/__pycache__
+/web/apps/pokemon_app/__pycache__/resources.cpython-35.pyc
+/web/apps/pokemon_app/migrations/__pycache__/0004_auto_20171130_1041.cpython-35.pyc
+/web/apps/pokemon_app/migrations/__pycache__/0005_historytrios.cpython-35.pyc
+/web/apps/pokemon_app/migrations/__pycache__/0006_auto_20171130_2357.cpython-35.pyc
+/web/apps/pokemon_app/migrations/__pycache__/0007_historytrios.cpython-35.pyc
+/web/apps/pokemon_app/migrations/__pycache__/0008_pokemontype.cpython-35.pyc
+/web/apps/pokemon_app/migrations/__pycache__/0009_auto_20171201_1657.cpython-35.pyc
+/web/apps/pokemon_app/migrations/__pycache__/0010_auto_20171202_1451.cpython-35.pyc
+/web/apps/pokemon_app/migrations/__pycache__/0011_auto_20171202_2039.cpython-35.pyc
+/web/apps/pokemon_app/migrations/__pycache__/0012_auto_20171202_2055.cpython-35.pyc
+/web/__pycache__
 static/
