@@ -1,36 +1,46 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load staticfiles %}
 {% block content %}
-<form id="frmCriteria" data-abide="ajax">
 
+    <script src="/static/js/base.js" type="text/javascript" charset="utf-8"></script>
+<form id="form-inline" data-abide="ajax" action="/results" method="GET">
+    {% csrf_token %}
     <fieldset id="desired-poke">
-        <legend>Design your ideal pokemon</legend>
     <!-- Autocomplete search all pokemon -->
-    <div class="row">
-        <div class="poke-pic"> 
+    <div class="grid-x margin-x">
+        <div class="grid-y">
+       <div class="medium-offset-4 medium-offset-8 large-8  cell" id="poke-pic"> 
+           <img src="{% static 'img/pokeball.jpg' %}" id="poke-pic">
         </div>
-            <!-- select pokemon -->
-            <label for="pokemon-select">Choose your Pokemon</label>
-            <select name="egg-move" id="pokemon-select" class="large-4 column">
-                <option value="not_selected">&lt;Select a Pokemon First&gt;</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
+        </div> 
+        <div class="grid-y">
+        <div class="medium-offset-4 medium-offset-8 large-8 cell">
+            <div class="cell">
+            <select name="pokemon" id="pokemon-select" class="large-4 column">
+                <option value="{% static 'img/pokeball.jpg' %}">
+                    &lt;Select a Pokemon First&gt;
+                </option>
+                {% for pokemon in pokemons %}
+                    <option value="">{{ pokemon.name }}</option>
+                {% endfor %}
             </select>
-            <!-- combo box all egg moves corresponding to that pokemon -->
-            <label for="egg-move-select">Choose your desired egg move</label>
-            <select name="egg-move" id="egg-move-select" class="large-4 column">
-                <option value="not_selected">&lt;Select a Pokemon First&gt;</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
+            </div>
+            <div class="cell">
+            
+            <select name="egg-move-select" id="egg-move-select" class="large-4 column">
+                <option value="not_selected">&lt;Select a Move&gt;</option>
             </select>
-    </div>
-    <br>
-    <button type="button" id="search-matches-btn" class="button success">
+            </div>
+            <br/>
+            <button type="submit" id="search-parents-button" class="button success">
         Search all possibilities 
     </button>
+        </div>
+        
+        </div>
+    </div>
+    
     </fieldset>
 </form>
 

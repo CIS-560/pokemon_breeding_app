@@ -32,7 +32,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.pokemon_app'
+    'apps.pokemon_app',
+    'import_export',
+    'csvimport.app.CSVImportConf',
 ]
 
 MIDDLEWARE = [
@@ -94,4 +96,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
+IMPORT_EXPORT_USE_TRANSACTIONS = True
 LOGIN_REDIRECT_URL = '/'

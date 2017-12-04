@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<script>
+$(document).ready(function(){
+    $(document).foundation();});
+</script>
+<div class="grid-x grid-padding-x align-center">
+    <div class="medium-6 cell"> 
+    <ul class="accordion" data-accordion data-allow-all-closed="true" data-multi-expand="true">
+    {% for trio in history_trios %}
+      <li class="accordion-item" data-accordion-item>
+          <a href="#" class="accordion-title">{{ trio.child.name }} with {{trio.child_egg_move}}</a>
+        <div class="accordion-content" data-tab-content>
+            <p>#{{ trio.parent1.number  }}. {{ trio.parent1.name }}</p>
+            <p>#{{ trio.parent2.number  }}. {{ trio.parent2.name }}</p>
+            <p>Level Up Move Needed {{ trio.parent_level_up_move }}</p>
+        </div>
+      </li>
+  {% endfor %}
+  </ul>
+</div>
+{% endblock %}
