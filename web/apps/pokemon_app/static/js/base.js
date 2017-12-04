@@ -7,10 +7,12 @@ $(document).ready(function() {
             { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
         });
     $("#pokemon-select").on('change',pokemonSelectionChanged);
-        /*function() {
-        $( '#egg-move-select' ).prop('disabled', false);
-        $( '#search-parents-button' ).prop('disabled', false);
-    });*/
+    $('##pokemon-select').change(function() {
+          $('#poke-pic').attr("src",this.value);
+    });
+    $("#egg-move-select").on('change', function() {
+    $( '#search-parents-button' ).prop('disabled', false);
+    });
 });
 function pokemonSelectionChanged() {
     var str = "";
@@ -40,7 +42,6 @@ function pokemonSelectionChanged() {
     });
     
     $( '#egg-move-select' ).prop('disabled', false);
-    $( '#search-parents-button' ).prop('disabled', false);
 }
 
 function setupEggMoves(egg_moves) {
