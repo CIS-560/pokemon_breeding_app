@@ -21,8 +21,9 @@ function pokemonSelectionChanged() {
     var str = "";
     var pokemon = "";
     var test ="";
-    var source = "static/img/poke/"+this.value
-    $('#poke-pic').attr("src", source);
+    var source = "static/img/pokemon/"+this.value
+    console.log("path " + source);
+    $('img').attr("src", source);
 
     $( "select option:selected" ).each(function() {
         console.log($(this).text());
