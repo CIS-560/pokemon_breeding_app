@@ -6,18 +6,23 @@ $(document).ready(function() {
             headers:
             { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
         });
+    //when pokemon is selected
     $("#pokemon-select").on('change',pokemonSelectionChanged);
-    $('##pokemon-select').change(function() {
+    /*    $('##pokemon-select').change(function() {
           $('#poke-pic').attr("src",this.value);
     });
+    */
     $("#egg-move-select").on('change', function() {
-    $( '#search-parents-button' ).prop('disabled', false);
+        $( '#search-parents-button' ).prop('disabled', false);
     });
 });
+
 function pokemonSelectionChanged() {
     var str = "";
     var pokemon = "";
     var test ="";
+    var source = "static/img/poke/"+this.value
+    $('#poke-pic').attr("src", source);
 
     $( "select option:selected" ).each(function() {
         console.log($(this).text());
@@ -26,7 +31,6 @@ function pokemonSelectionChanged() {
     });
 
     //    alert(str + '\n' + pokemon + '\n' + test);
-
     $.ajax({
         url: '/egg_moves/',
         type: 'POST',
@@ -41,12 +45,11 @@ function pokemonSelectionChanged() {
         }
     });
     
-    $( '#egg-move-select' ).prop('disabled', false);
+        $( '#egg-move-select' ).prop('disabled', false);
 }
 
 function setupEggMoves(egg_moves) {
     var eggMoveSelect = $( '#egg-move-select' );
-
 
     if(!egg_moves.length) {
         // no egg moves found, change the text in the empty option

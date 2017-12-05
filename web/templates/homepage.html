@@ -2,45 +2,40 @@
 {% load static %}
 {% load staticfiles %}
 {% block content %}
+<script src="/static/js/base.js" type="text/javascript" charset="utf-8"></script>
 
-    <script src="/static/js/base.js" type="text/javascript" charset="utf-8"></script>
 <form id="form-inline" data-abide="ajax" action="/results" method="GET">
     {% csrf_token %}
     <fieldset id="desired-poke">
     <!-- Autocomplete search all pokemon -->
-    <div class="grid-x margin-x">
-        <div class="grid-y">
-       <div class="medium-offset-4 medium-offset-8 large-8  cell" id="poke-pic"> 
-           <img src="{% static 'img/pokeball.jpg' %}" id="poke-pic">
+    <div class="row align-spaced">
+        <div class="column small-4  cell" id="poke-pic"> 
+            <img src="{% static 'img/pokeball.jpg' %}" id="poke-pic">
         </div>
-        </div> 
-        <div class="grid-y">
-        <div class="medium-offset-4 medium-offset-8 large-8 cell">
-            <div class="cell">
+        <div class="column large-8">
+            <div class="row">
             <select name="pokemon" id="pokemon-select" class="large-4 column">
                 <option value="{% static 'img/pokeball.jpg' %}">
                     &lt;Select a Pokemon First&gt;
                 </option>
                 {% for pokemon in pokemons %}
-                    <option value="">{{ pokemon.name }}</option>
+                <option value="{{ pokemon.picture }}">{{ pokemon.name }}</option>
                 {% endfor %}
             </select>
             </div>
-            <div class="cell">
-            
+            <div class="row">
             <select name="egg-move-select" id="egg-move-select" class="large-4 column">
                 <option value="not_selected">&lt;Select a Move&gt;</option>
             </select>
             </div>
-            <br/>
+            <div class="row">
             <button type="submit" id="search-parents-button" class="button success">
-        Search all possibilities 
-    </button>
+                Search all possibilities 
+            </button>
+            </div>
         </div>
         
-        </div>
     </div>
-    
     </fieldset>
 </form>
 
