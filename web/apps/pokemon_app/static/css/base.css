@@ -136,3 +136,6 @@ body {
   font-weight: bold;
 }
 
+select {
+    max-width: 300px;
+}
