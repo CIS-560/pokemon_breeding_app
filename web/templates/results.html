@@ -1,22 +1,22 @@
-
 {% extends 'base.html' %}
 {% block content %}
-<script src="/static/js/foundation.accordion.js" type="text/javascript" charset="utf-8"></script>
-<script src="/static/js/foundation.core.js" type="text/javascript" charset="utf-8"></script>
 <script src="/static/js/results.js" type="text/javascript" charset="utf-8"></script>
-<div data-closable class="callout alert-callout-border success">
+<!--Callout -->
+<div data-closable class="callout alert-callout-border success" id="fav-callout">
   <strong>Yay!</strong> - You accomplished a simple task!
   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<ul class="accordion" data-accordion data-allow-all-closed="true" > 
-{% for pokemon_1, pokemon_2 in pokemons %}
-    <div class="row">
-  	    <div class="large-6 columns">
+
+<!--Accordion-->
+<div class="row content">
+  	 <div class="small-6 column">
+        {% for pokemon_1 in male_pokemon %}
+        <ul class="accordion" data-accordion data-allow-all-closed="true" > 
 	        <li class="accordion-item" data-accordion-item>
                 <a href="#" class="accordion-title">{{ pokemon_1.name }}</a>
-    		    <div class="accordion-content">
+                <div class="accordion-content" data-accordion-item>
                     <table class="hover">
                         <thead>
                             <tr><th width="200">Details</th><th>Male/Ditto</th></tr>
@@ -29,17 +29,21 @@
                             <tr><td>Gender</td><td>{{ pokemon_1.genders }}</td></tr>
                             <tr><td>Egg Group(s)</td><td>{{ pokemon_1.egg_groups }}</td></tr>
                         </tbody>
-                        </table>
-    		        </div>
-		        </li>
-            </div><!--End Col-->
-  	    <div class="large-6 columns">
-    	    <li class="accordion-item" data-accordion-item>        
+                    </table>
+                </div><!--End Accordion Content-->
+            </li>
+         </ul>
+         {% endfor %}
+    </div><!--End Col-->
+    <div class="small-6 column">
+        {% for pokemon_2 in female_pokemon %}
+        <ul class="accordion" data-accordion data-allow-all-closed="true" >
+            <li class="accordion-item" data-accordion-item>        
                 <a href="#" class="accordion-title">{{ pokemon_2.name }}</a>
-    		    <div class="accordion-content">
+                <div class="accordion-content" data-accordion-item>
                     <table class="hover">
                         <thead>
-                                <tr><th width="200">Details</th><th>Male/Ditto</th></tr>
+                            <tr><th width="200">Details</th><th>Male/Ditto</th></tr>
                         </thead>
                         <tbody>
                             <tr><td>Name</td><td>{{ pokemon_2.name }}</td></tr>
@@ -49,13 +53,14 @@
                             <tr><td>Gender</td><td>{{ pokemon_2.genders }}</td></tr>
                             <tr><td>Egg Group(s)</td><td>{{ pokemon_2.egg_groups }}</td></tr>
                         </tbody>
-                        </table>
-    		        </div>
-                </li>
-            </div><!--End Col-->
+                  </table>
+              </div>
+            </li>
+        </ul>
+        {% endfor %}
+    </div><!--End Col-->
 </div><!--End Row -->
-{% endfor %}
-</ul> 
+
     <!--
                 <button type="button" 
                     class="hollow button secondary" 
@@ -66,7 +71,5 @@
                 --> 
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/foundation/js/foundation.js"></script>
-  <script>
-    $(document).foundation();
-  </script>
+ 
 {% endblock %}

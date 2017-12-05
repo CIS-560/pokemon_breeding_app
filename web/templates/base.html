@@ -17,26 +17,23 @@
         <!-- this will include every plugin and utility required by Foundation -->
         <script src="/static/js/foundation.js"></script>
         <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script src="/static/js/foundation.accordion.js" type="text/javascript" charset="utf-8"></script>
-<script src="/static/js/foundation.core.js" type="text/javascript" charset="utf-8"></script>
     </head>
 
     <body>
         <header class="subnav-hero-section">
-
             <h3 class="subnav-hero-headline">Pokemon Egg App <small>gen 2</small></h3>
-        <ul class="subnav-hero-subnav">
+            <ul class="subnav-hero-subnav">
             <li><a href="/">Breeding Test</a></li>
-             {% if user.is_authenticated %}
-                <li> <a href="/favorites" class="is-active">Favorites</a></li>
-             {% else %}
-                <li> <a href="/login" class="is-active">Login</a></li>
+                 {% if user.is_authenticated %}
+                    <li> <a href="/favorites" class="is-active">Favorites</a></li>
+                 {% else %}
+                    <li> <a href="/login" class="is-active">Login</a></li>
              {% endif %}
-        </ul>
+            </ul>
         </header>
         <div class="content container">
-                  {% block content %}
-                  {% endblock %}
-    </div>
+            {% block content %}
+            {% endblock %}
+        </div>
     </body>
 </html>
