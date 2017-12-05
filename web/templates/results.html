@@ -1,80 +1,45 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-<script src="/static/js/results.js" type="text/javascript" charset="utf-8"></script>
-<!--Callout -->
-<div data-closable class="callout alert-callout-border success" id="fav-callout">
-  <strong>Yay!</strong> - You accomplished a simple task!
-  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-
-<!--Accordion-->
-<div class="row content">
-  	 <div class="small-6 column">
-         <h4>Male/Ditto</h4>
-         <ul class="accordion" data-accordion data-allow-all-closed="true" > 
-        {% for pokemon_1 in male_pokemon %}
-        
-	        <li class="accordion-item" data-accordion-item>
-                <a href="#" class="accordion-title">{{ pokemon_1.name }}</a>
-                <div class="accordion-content" data-accordion-item>
-                    <table class="hover">
-                        <thead>
-                            <tr><th width="200">Details</th><th>Male/Ditto</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>Name</td><td>{{ pokemon_1.name }}</td></tr>
-                            <tr><td>Pokemon Number</td><td>{{ pokemon_1.number }}</td></tr>
-                            <tr><td>Classification</td><td>{{ pokemon_1.description }}</td></tr>
-                            <tr><td>Type</td><td>{{ pokemon_1.type }}</td></tr>
-                            <tr><td>Gender</td><td>{{ pokemon_1.genders }}</td></tr>
-                            <tr><td>Egg Group(s)</td><td>{{ pokemon_1.egg_groups }}</td></tr>
-                        </tbody>
-                    </table>
-                </div><!--End Accordion Content-->
-            </li>
-         
-         {% endfor %}
-        </ul>
-    </div><!--End Col-->
-    <div class="small-6 column">
-        <h4>Female/Genderless</h4>
-                <ul class="accordion" data-accordion data-allow-all-closed="true" >
-
-        {% for pokemon_2 in female_pokemon %}
-            <li class="accordion-item" data-accordion-item>        
-                <a href="#" class="accordion-title">{{ pokemon_2.name }}</a>
-                <div class="accordion-content" data-accordion-item>
-                    <table class="hover">
-                        <thead>
-                            <tr><th width="200">Details</th><th>Male/Ditto</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>Name</td><td>{{ pokemon_2.name }}</td></tr>
-                            <tr><td>Pokemon Number</td><td>{{ pokemon_2.number }}</td></tr>
-                            <tr><td>Classification</td><td>{{ pokemon_2.description }}</td></tr>
-                            <tr><td>Type</td><td>{{ pokemon_2.type }}</td></tr>
-                            <tr><td>Gender</td><td>{{ pokemon_2.genders }}</td></tr>
-                            <tr><td>Egg Group(s)</td><td>{{ pokemon_2.egg_groups }}</td></tr>
-                        </tbody>
-                  </table>
-              </div>
-            </li>
-        {% endfor %}
-        </ul>                    
-    </div><!--End Col-->
-</div><!--End Row -->
-
-    <!--
-                <button type="button" 
-                    class="hollow button secondary" 
-                    id="add-to-favorites" 
-                    onclick="addToFavorites()">
-                    Add To Favorites
-                </button>
-                --> 
-  <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="bower_components/foundation/js/foundation.js"></script>
- 
-{% endblock %}
+        <script src="/static/js/foundation.js"></script>
+    <script>
+        $(document).ready(function(){
+                $(document).foundation();
+                });
+        </script>
+        <div class="grid-x">
+            <div class="small-6 cell"> 
+                <h4>Male/Ditto Possibilities</h4>
+    {% for pokemon_1 in male_pokemon %}
+        <ul class="accordion" data-accordion data-allow-all-closed="true" data-multi-expand="true">
+            <li class="accordion-item" data-accordion-item>
+                <a href="#" class="accordion-title">{{ pokemon_1.name  }}</a>
+                <div class="accordion-content" data-tab-content>
+                    <p>{{ pokemon_1.number  }}</p>
+                    <p>{{ pokemon_1.description  }}</p>
+                    <p>{{ pokemon_1.type  }}</p>
+                    <p>{{ pokemon_1.genders  }}</p>
+                    <p>{{ pokemon_1.egg_groups  }}</p>
+        </div>
+      </li>
+  </ul>
+  {% endfor %}
+  </div>
+  <div class="small-6 cell">
+      <h4>Female/Genderless Possibilities</h4>
+    {% for pokemon_2 in female_pokemon %}
+        <ul class="accordion" data-accordion data-allow-all-closed="true" data-multi-expand="true">
+            <li class="accordion-item" data-accordion-item>
+                <a href="#" class="accordion-title">{{ pokemon_2.name  }}</a>
+                <div class="accordion-content" data-tab-content>
+                    <p>{{ pokemon_2.number  }}</p>
+                    <p>{{ pokemon_2.description  }}</p>
+                    <p>{{ pokemon_2.type  }}</p>
+                    <p>{{ pokemon_2.genders  }}</p>
+                    <p>{{ pokemon_2.egg_groups  }}</p>
+        </div>
+      </li>
+  </ul>
+  {% endfor %}
+  </div>
+  {% endblock %}
