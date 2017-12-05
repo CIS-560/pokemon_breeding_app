@@ -77,7 +77,7 @@
 }
 
 body {
-    overflow:hidden;
+    overflow:scroll;
 }
 
 #search-parents-button {
