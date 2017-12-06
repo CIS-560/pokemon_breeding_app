@@ -2,12 +2,29 @@
 {% load static %}
 {% block content %}
         <script src="/static/js/foundation.js"></script>
-    <script>
+<script>
         $(document).ready(function(){
                 $(document).foundation();
+                $( '.sidebar' ).fixedsticky();
+
                 });
-        </script>
-        <div class="grid-x">
+</script>
+<form id="form-inline" data-abide="ajax" action="" method="GET">
+<button type="submit" class="hollow button secondary" id="addToFavorites">
+	Add To Favorites
+</button> 
+       <div class="count-checkboxes-wrapper">
+        <span id="count-checked-checkboxes">0</span> checked
+    </div>
+            
+    
+    <div class="form-item form-type-textfield form-item-count-checked-checkboxes">
+      <label for="edit-count-checked-checkboxes">count-checked-checkboxes <span class="form-required" title="Szükséges mező.">*</span></label>
+     <input type="text" id="edit-count-checked-checkboxes" name="count-checked-checkboxes" value="0" size="60" maxlength="50" class="form-text required" />
+    </div>    
+
+    <div class="grid-x">
+            
             <div class="small-6 cell"> 
                 <h4>Male/Ditto Possibilities</h4>
     {% for pokemon_1 in male_pokemon %}
@@ -17,15 +34,14 @@
                 <div class="accordion-content" data-tab-content>
                     <table class="hover">
                         <thead>
-                            <tr><th width="200">Details</th><th width=200>Male/Ditto</th><th></th></tr>
+                            <tr><th width="200">Details</th><th width=200>Male/Ditto</th><th width=150></th></tr>
                         </thead>
                         <tbody>
                             <tr><td>Name</td><td>{{ pokemon_1.name }}</td><td rowspan=4><img ng-src="static/img/pokemon/{{ pokemon_1.picture }}" alt="{{pokemon_1.name}}" width=100%</td></tr>
                             <tr><td>Pokemon Number</td><td>{{ pokemon_1.number }}</td></tr>
                             <tr><td>Classification</td><td>{{ pokemon_1.description }}</td></tr>
                             <tr><td>Type</td><td>{{ pokemon_1.type }}</td></tr>
-                            <tr><td>Gender</td><td>{{ pokemon_1.genders }}</td></tr>
-                            <tr><td>Egg Group(s)</td><td>{{ pokemon_1.egg_groups }}</td></tr>
+                            <tr><td>Egg Group(s)</td><td>{{ pokemon_1.egg_groups }}</td><td><input id="{{pokemon_1.name}}-{{pokemon.genders}}" type="checkbox"><label for="Add-To-Favorites">Add to favorites</label></td></tr>
                         </tbody>
                     </table>
         </div>
@@ -49,8 +65,7 @@
                             <tr><td>Pokemon Number</td><td>{{ pokemon_2.number }}</td></tr>
                             <tr><td>Classification</td><td>{{ pokemon_2.description }}</td></tr>
                             <tr><td>Type</td><td>{{ pokemon_2.type }}</td></tr>
-                            <tr><td>Gender</td><td>{{ pokemon_2.genders }}</td></tr>
-                            <tr><td>Egg Group(s)</td><td>{{ pokemon_2.egg_groups }}</td></tr>
+                            <tr><td>Egg Group(s)</td><td>{{ pokemon_2.egg_groups }}</td><td><input id="{{pokemon_1.name}}-{{pokemon.genders}}" type="checkbox"><label for="Add-To-Favorites">Add to favorites</label></td></tr>
                         </tbody>
                   </table>
         </div>
@@ -58,4 +73,13 @@
   </ul>
   {% endfor %}
   </div>
+   <!--  <div class="columns small-6 right" data-sticky-container>
+  <div class="sticky" data-sticky data-anchor="foo">
+    <img class="thumbnail" src="https://cdn.bulbagarden.net/upload/d/dd/Pok%C3%A9_Ball_SSBB.png">
+      <p>Chosen so far</p>
+      <button>Add to favorites</button>
+    This sticky element would stick to the window for the height of the element #foo, with a 1em marginTop 
+  </div>
+</div>-->
+</form>
   {% endblock %}
