@@ -139,3 +139,15 @@ body {
 select {
     max-width: 300px;
 }
+
+#sticky-side {
+    background: light-blue;
+    opacity: 0.5;
+    display: inline-block;
+		width: 25%;
+		vertical-align: top;
+}
+
+#addToFavorites {
+    margin: 5px;
+}
