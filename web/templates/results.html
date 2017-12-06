@@ -15,11 +15,19 @@
             <li class="accordion-item" data-accordion-item>
                 <a href="#" class="accordion-title">{{ pokemon_1.name  }}</a>
                 <div class="accordion-content" data-tab-content>
-                    <p>{{ pokemon_1.number  }}</p>
-                    <p>{{ pokemon_1.description  }}</p>
-                    <p>{{ pokemon_1.type  }}</p>
-                    <p>{{ pokemon_1.genders  }}</p>
-                    <p>{{ pokemon_1.egg_groups  }}</p>
+                    <table class="hover">
+                        <thead>
+                            <tr><th width="200">Details</th><th width=200>Male/Ditto</th><th></th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Name</td><td>{{ pokemon_1.name }}</td><td rowspan=4><img ng-src="static/img/pokemon/{{ pokemon_1.picture }}" alt="{{pokemon_1.name}}" width=100%</td></tr>
+                            <tr><td>Pokemon Number</td><td>{{ pokemon_1.number }}</td></tr>
+                            <tr><td>Classification</td><td>{{ pokemon_1.description }}</td></tr>
+                            <tr><td>Type</td><td>{{ pokemon_1.type }}</td></tr>
+                            <tr><td>Gender</td><td>{{ pokemon_1.genders }}</td></tr>
+                            <tr><td>Egg Group(s)</td><td>{{ pokemon_1.egg_groups }}</td></tr>
+                        </tbody>
+                    </table>
         </div>
       </li>
   </ul>
@@ -32,11 +40,19 @@
             <li class="accordion-item" data-accordion-item>
                 <a href="#" class="accordion-title">{{ pokemon_2.name  }}</a>
                 <div class="accordion-content" data-tab-content>
-                    <p>{{ pokemon_2.number  }}</p>
-                    <p>{{ pokemon_2.description  }}</p>
-                    <p>{{ pokemon_2.type  }}</p>
-                    <p>{{ pokemon_2.genders  }}</p>
-                    <p>{{ pokemon_2.egg_groups  }}</p>
+                    <table class="hover">
+                        <thead>
+                            <tr><th width="200">Details</th><th>Male/Ditto</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Name</td><td>{{ pokemon_2.name }}</td></tr>
+                            <tr><td>Pokemon Number</td><td>{{ pokemon_2.number }}</td></tr>
+                            <tr><td>Classification</td><td>{{ pokemon_2.description }}</td></tr>
+                            <tr><td>Type</td><td>{{ pokemon_2.type }}</td></tr>
+                            <tr><td>Gender</td><td>{{ pokemon_2.genders }}</td></tr>
+                            <tr><td>Egg Group(s)</td><td>{{ pokemon_2.egg_groups }}</td></tr>
+                        </tbody>
+                  </table>
         </div>
       </li>
   </ul>
