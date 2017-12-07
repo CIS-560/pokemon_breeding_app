@@ -41,8 +41,18 @@
                     </tr>
                     <tr>
                         <td>Type</td>
-                        <td>{{ pokemon_1.type }}</td>
-                        <td>{{ pokemon_2.type }}</td>
+                        <td>
+                        {%  for type in pokemon_1.type.all %}
+                            {{ type.name }}
+                                 
+                        {% endfor %}
+                        </td>
+                        <td>
+                        {%  for type in pokemon_2.type.all %}
+                            {{ type.name }}
+                                 
+                        {% endfor %}
+                    </td>
                     </tr>
                     <tr>
                         <td>Gender</td>
@@ -51,8 +61,19 @@
                     </tr>
                     <tr>
                         <td>Egg Group(s)</td>
-                        <td>{{ pokemon_1.egg_groups }}</td>
-                        <td>{{ pokemon_2.egg_groups }}</td>
+                        <td>
+                        {%  for egg_group in pokemon_1.egg_groups.all %}
+                            {{ egg_group.name }}
+                                  
+                        {% endfor %}
+                        </td>
+
+                        <td>
+                        {%  for egg_group in pokemon_2.egg_groups.all %}
+                            {{ egg_group.name }}
+                                   
+                        {% endfor %}
+                        </td>
                     </tr>
                 </tbody>
                 </table>
