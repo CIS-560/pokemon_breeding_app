@@ -1,15 +1,39 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-        <script src="/static/js/foundation.js"></script>
-<script>
+<script src="/static/js/foundation.js"></script>
+<!--<script>
         $(document).ready(function(){
                 $(document).foundation();
-                $( '.sidebar' ).fixedsticky();
+        });
+    </script>-->
+<script src="/static/js/results.js"></script>
+<!--Success Callout-->
+<div class="success callout" data-closable id="fav-callout">
+<i class="fa fa-star"></i>You successfully added the pair to your favorites
+<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+	<span aria-hidden="true">&times;</span>
+</button>
+</div>
 
-                });
-</script>
+<!-- select favorites -->
 <form id="form-inline" data-abide="ajax" action="" method="GET">
+    <select name="pokemon" id="male_pokemon" class="large-4 column">
+        <option value="{% static 'img/pokeball.jpg' %}">
+            &lt;Select a Pokemon First&gt;
+        </option>
+    {% for pokemon_1 in male_pokemon %}
+        <option value="{{ pokemon_1.picture }}">{{ pokemon_1.name }}</option>
+    {% endfor %}
+    </select>
+    <select name="pokemon" id="female_pokemon" class="large-4 column">
+        <option value="{% static 'img/pokeball.jpg' %}">
+            &lt;Select a Pokemon First&gt;
+        </option>
+    {% for pokemon_2 in male_pokemon %}
+        <option value="{{ pokemon_2.picture }}">{{ pokemon_2.name }}</option>
+    {% endfor %}
+    </select>
 <button type="submit" class="hollow button secondary" id="addToFavorites">
 	Add To Favorites
 </button> 
@@ -32,8 +56,16 @@
                             <tr><td>Name</td><td>{{ pokemon_1.name }}</td><td rowspan=4><img ng-src="static/img/pokemon/{{ pokemon_1.picture }}" alt="{{pokemon_1.name}}" width=100%</td></tr>
                             <tr><td>Pokemon Number</td><td>{{ pokemon_1.number }}</td></tr>
                             <tr><td>Classification</td><td>{{ pokemon_1.description }}</td></tr>
-                            <tr><td>Type</td><td>{{ pokemon_1.type }}</td></tr>
-                            <tr><td>Egg Group(s)</td><td>{{ pokemon_1.egg_groups }}</td><td><input id="{{pokemon_1.name}}-{{pokemon.genders}}" type="checkbox"><label for="Add-To-Favorites">Add to favorites</label></td></tr>
+                            <tr><td>Type</td><td>
+                            {% for type in pokemon_1.type.all %}
+                                {{ type.name }}
+                            {% endfor %}
+                            </td></tr>
+                            <tr><td>Egg Group(s)</td><td>
+                            {%  for egg_group in pokemon_1.egg_groups.all %}
+                                {{ egg_group.name }}
+                            {% endfor %}
+                    </td></tr>
                         </tbody>
                     </table>
         </div>
@@ -56,8 +88,16 @@
                             <tr><td>Name</td><td>{{ pokemon_2.name }}</td></tr>
                             <tr><td>Pokemon Number</td><td>{{ pokemon_2.number }}</td></tr>
                             <tr><td>Classification</td><td>{{ pokemon_2.description }}</td></tr>
-                            <tr><td>Type</td><td>{{ pokemon_2.type }}</td></tr>
-                            <tr><td>Egg Group(s)</td><td>{{ pokemon_2.egg_groups }}</td><td><input id="{{pokemon_1.name}}-{{pokemon.genders}}" type="checkbox"><label for="Add-To-Favorites">Add to favorites</label></td></tr>
+                            <tr><td>Type</td><td>
+                            {% for type in pokemon_2.type.all %}
+                                {{ type.name }}
+                            {% endfor %}
+                            </td></tr>
+                            <tr><td>Egg Group(s)</td><td>
+                            {%  for egg_group in pokemon_2.egg_groups.all %}
+                                {{ egg_group.name }}
+                            {% endfor %}
+                            </td></tr>
                         </tbody>
                   </table>
         </div>
@@ -65,13 +105,4 @@
   </ul>
   {% endfor %}
   </div>
-   <!--  <div class="columns small-6 right" data-sticky-container>
-  <div class="sticky" data-sticky data-anchor="foo">
-    <img class="thumbnail" src="https://cdn.bulbagarden.net/upload/d/dd/Pok%C3%A9_Ball_SSBB.png">
-      <p>Chosen so far</p>
-      <button>Add to favorites</button>
-    This sticky element would stick to the window for the height of the element #foo, with a 1em marginTop 
-  </div>
-</div>-->
-
   {% endblock %}
