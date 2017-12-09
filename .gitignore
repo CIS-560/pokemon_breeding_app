@@ -7,7 +7,7 @@ static/
 web/config/__pycache__/
 web/apps/pokemon_app/migrations/__pycache__/
 web/config/settings/__pycache__/base.cpython-35.pyc
-DS_Store 
+.DS_Store 
 /web/.DS_Store
 /web/apps/.DS_Store
 /web/apps/pokemon_app/.DS_Store 
