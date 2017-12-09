@@ -59,8 +59,9 @@ def results(request):
     # poke = get_object_or_404(Pokemon, pk=selected_poke) 
     female_pokemons = Pokemon.objects.exclude(female_ratio=0)
     male_pokemons = Pokemon.objects.exclude(male_ratio=0)
-    pokemons = zip(female_pokemons, male_pokemons)
-    return render(request, '../templates/results.html', {'pokemons':pokemons})
+    #pokemons = zip(female_pokemons, male_pokemons)
+    #return render(request, '../templates/results.html', {'pokemons':pokemons})
+    return render(request, '../templates/results.html', {'male_pokemon':male_pokemons, 'female_pokemon': female_pokemons})
 
 
 def simple_upload(request):

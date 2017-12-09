@@ -1,9 +1,9 @@
 /*
     DJANGO Admin styles
-*/
+
 
 @import url(fonts.css);
-
+*/
 .subnav-hero-section {
   text-align: center;
   background: #317b8b;
@@ -77,7 +77,7 @@
 }
 
 body {
-    overflow:hidden;
+    overflow:scroll;
 }
 
 #search-parents-button {
@@ -136,3 +136,18 @@ body {
   font-weight: bold;
 }
 
+select {
+    max-width: 300px;
+}
+
+#sticky-side {
+    background: light-blue;
+    opacity: 0.5;
+    display: inline-block;
+		width: 25%;
+		vertical-align: top;
+}
+
+#addToFavorites {
+    margin: 5px;
+}

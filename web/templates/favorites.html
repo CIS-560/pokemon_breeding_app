@@ -11,9 +11,28 @@ $(document).ready(function(){
       <li class="accordion-item" data-accordion-item>
           <a href="#" class="accordion-title">{{ trio.child.name }} with {{trio.child_egg_move}}</a>
         <div class="accordion-content" data-tab-content>
-            <p>#{{ trio.parent1.number  }}. {{ trio.parent1.name }}</p>
-            <p>#{{ trio.parent2.number  }}. {{ trio.parent2.name }}</p>
-            <p>Level Up Move Needed {{ trio.parent_level_up_move }}</p>
+            <thead><tr>
+                      <th width="200">Details</th>
+                      <th>Male/Ditto</th>
+                      <th>Female/Genderless</th>
+                    </tr></thead>
+                  <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{ trio.parent1.name }}</td>
+                        <td>{{ trio.parent2.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Pokemon Number</td>
+                        <td>{{ trio.parent1.number }}</td>
+                        <td>{{ trio.parent2.number }}</td>
+                    </tr>
+                    <tr>
+                        <td>Level up move needed</td>
+                        <td colspan=2>{{ trio.parent_level_up_move }}</td>
+                    </tr>
+                </tbody>
+                </table>
         </div>
       </li>
   {% endfor %}
