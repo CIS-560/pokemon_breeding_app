@@ -15,11 +15,10 @@
 	<span aria-hidden="true">&times;</span>
 </button>
 </div>
-
 <!-- select favorites -->
-<form id="form-inline" data-abide="ajax" action="" method="GET">
+<form id="form-inline" data-abide="ajax" action="" method="POST">
     <select name="pokemon" id="male_pokemon" class="large-4 column">
-        <option value="{% static 'img/pokeball.jpg' %}">
+        <option value="{% static 'img/pokeball.jpg' %}"
             &lt;Select a Pokemon First&gt;
         </option>
     {% for pokemon_1 in male_pokemon %}

@@ -61,7 +61,7 @@ def results(request):
     male_pokemons = Pokemon.objects.exclude(male_ratio=0)
     #pokemons = zip(female_pokemons, male_pokemons)
     #return render(request, '../templates/results.html', {'pokemons':pokemons})
-    return render(request, '../templates/results.html', {'male_pokemon':male_pokemons, 'female_pokemon': female_pokemons})
+    return render(request, '../templates/results.html', {'child':(pokemon,selected_egg_move),male_pokemon':male_pokemons, 'female_pokemon': female_pokemons})
 
 
 def simple_upload(request):

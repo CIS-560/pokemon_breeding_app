@@ -10,7 +10,13 @@ $(document).foundation();
     console.log('element hidden');  
 });
 function addToFavorites() {
-    console.log("button clicked");
+    //var $form = $('form');
+    //$form.submit(function(){
+      $.post($(this).attr('action'), $(this).serialize(), function(response){
+            // do something here on success
+      },'json');
+    // return false;
+    //});    console.log("button clicked");
 		var callout = document.getElementById("fav-callout");
     	console.log(document.getElementById("male_pokemon"));
 
