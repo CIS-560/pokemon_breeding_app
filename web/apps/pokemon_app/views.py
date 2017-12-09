@@ -8,6 +8,7 @@ from django.shortcuts import redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from tablib import Dataset
+from django import forms
 import pandas as pd 
 import ast
 import json
@@ -21,9 +22,10 @@ def app_entry(request):
         print('yay im print')
         # print(pokemon_obj_name)
         #moves = Moves.objects.all()
+        selecter_poke = request.POST.get('pokemon_select')
         selected_move = request.POST.get('egg_move_select');
         selected_name = Moves.objects.get(name= selected_move)
-        print(selected_name)
+        print('pokemon', selecter_poke, 'move', selected_move)
         # selected = Pokemon.objects.get(name = selected_pokemon)
         return redirect(request, 'results')
     pokemons = Pokemon.objects.all()
@@ -32,11 +34,10 @@ def app_entry(request):
 @csrf_exempt
 def egg_moves(request):
     pokemon = request.POST['pokemon']
-    
     egg_moves = Pokemon.objects.get(name=pokemon).egg_moves.all()
     egg_moves_list = []
     for i in egg_moves:
-        print(i.name)
+#        print(i.name)
         egg_moves_list.append(i.name)
     if request.method == 'POST':
         return JsonResponse({'egg_moves': egg_moves_list}) 
@@ -46,16 +47,19 @@ def egg_moves(request):
 def get_values(request):
     selected_move = request.POST.get('egg_move_select')
     selected_poke = request.POST.get('pokemon-select')
-    print('we have')
-    print(selected_poke)
-    print('with')
-    print(selected_move)
+    print('we have',selected_poke,'with',selected_move)
     return redirect('results' )
 
 
+#male pokemon: male pokemon & ditto 
+#female pokemon: female pokemon or ungendered (if breeding with a ditto)
 def results(request):
-    #male pokemon: male pokemon & ditto 
-    #female pokemon: female pokemon or ungendered (if breeding with a ditto)
+    for key, value in request.POST.items():
+        print(key, value)
+    selected_move = request.POST.get('egg_move_select')
+    selected_poke = request.POST.get('pokemon')
+    temp = selected_poke[4::].split(".",1)[0]
+    print('we have',temp,'with',selected_move)
     # poke = get_object_or_404(Pokemon, pk=selected_poke) 
     female_pokemons = Pokemon.objects.exclude(female_ratio=0)
     male_pokemons = Pokemon.objects.exclude(male_ratio=0)
