@@ -7,8 +7,8 @@ $(document).ready(function() {
             { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
         });
     //when pokemon is selected
-    $("#pokemon-select").on('change',pokemonSelectionChanged);
-    /*    $('##pokemon-select').change(function() {
+    $("#pokemon_select").on('change',pokemonSelectionChanged);
+    /*    $('##pokemon_select').change(function() {
           $('#poke-pic').attr("src",this.value);
     });
     */
