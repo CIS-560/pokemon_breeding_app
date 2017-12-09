@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("#egg-move-select").attr('disabled','disabled'); // disable
+    $("#egg_move_select").attr('disabled','disabled'); // disable
     $("#search-parents-button").attr('disabled','disabled'); // disable
     console.log("test");
     $.ajaxSetup({
@@ -46,16 +46,17 @@ function pokemonSelectionChanged() {
         }
     });
     
-        $( '#egg-move-select' ).prop('disabled', false);
+    $( '#egg_move_select' ).prop('disabled', false);
+    $( '#search-parents-button' ).prop('disabled', false);
 }
 
 function setupEggMoves(egg_moves) {
-    var eggMoveSelect = $( '#egg-move-select' );
+    var eggMoveSelect = $( '#egg_move_select' );
 
     if(!egg_moves.length) {
         // no egg moves found, change the text in the empty option
         eggMoveSelect.append($('<option>No Egg Moves found</option>'));
-        return $( '#egg-move-select' ).prop('disabled', true);
+        return $( '#egg_move_select' ).prop('disabled', true);
     }
     else { 
         for (var i = 0, len = egg_moves.length; i < len; i++) {

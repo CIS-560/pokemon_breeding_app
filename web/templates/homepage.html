@@ -3,8 +3,7 @@
 {% load staticfiles %}
 {% block content %}
 <script src="/static/js/base.js" type="text/javascript" charset="utf-8"></script>
-
-<form id="form-inline" data-abide="ajax" action="/results" method="GET">
+<form id="form-inline" data-abide="ajax" action="{% url 'get_values' %}" method="POST">
     {% csrf_token %}
     <fieldset id="desired-poke">
     <!-- Autocomplete search all pokemon -->
@@ -23,8 +22,8 @@
                 {% endfor %}
             </select>
             </div>
-            <div class="row">
-            <select name="egg-move-select" id="egg-move-select" class="large-4 column">
+            <div class="cell">
+            <select name="egg_move_select" id="egg_move_select" class="large-4 column">
                 <option value="not_selected">&lt;Select a Move&gt;</option>
             </select>
             </div>
