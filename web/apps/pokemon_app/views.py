@@ -13,9 +13,20 @@ import ast
 import json
 
 # Create your views here.
+@csrf_exempt
 def app_entry(request):
+    if request.method == 'POST':
+        # pokemon = request.GET.get('pokemon')
+        # pokemon_obj_name = Pokemon.objects.get(name = pokemon)
+        print('yay im print')
+        # print(pokemon_obj_name)
+        #moves = Moves.objects.all()
+        selected_move = request.POST.get('egg_move_select');
+        selected_name = Moves.objects.get(name= selected_move)
+        print(selected_name)
+        # selected = Pokemon.objects.get(name = selected_pokemon)
+        return redirect(request, 'results')
     pokemons = Pokemon.objects.all()
-    #moves = Moves.objects.all()
     return render(request, '../templates/homepage.html', {'pokemons': pokemons})
 
 @csrf_exempt
@@ -31,9 +42,21 @@ def egg_moves(request):
         return JsonResponse({'egg_moves': egg_moves_list}) 
         # return the egg moves that correspond to the chosen pokemon
 
+@csrf_exempt
+def get_values(request):
+    selected_move = request.POST.get('egg_move_select')
+    selected_poke = request.POST.get('pokemon-select')
+    print('we have')
+    print(selected_poke)
+    print('with')
+    print(selected_move)
+    return redirect('results' )
+
+
 def results(request):
     #male pokemon: male pokemon & ditto 
     #female pokemon: female pokemon or ungendered (if breeding with a ditto)
+    # poke = get_object_or_404(Pokemon, pk=selected_poke) 
     female_pokemons = Pokemon.objects.exclude(female_ratio=0)
     male_pokemons = Pokemon.objects.exclude(male_ratio=0)
     pokemons = zip(female_pokemons, male_pokemons)
