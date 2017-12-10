@@ -15,9 +15,10 @@
 	<span aria-hidden="true">&times;</span>
 </button>
 </div>
-
 <!-- select favorites -->
-<form id="form-inline" data-abide="ajax" action="" method="GET">
+<div class="callout secondary" id="select_fav">
+    <h5 id="sentence">Options for {{child.0}} with {{child.1}}</h5>
+    <!--Male Pokemon-->
     <select name="pokemon" id="male_pokemon" class="large-4 column">
         <option value="{% static 'img/pokeball.jpg' %}">
             &lt;Select a Pokemon First&gt;
@@ -26,6 +27,8 @@
         <option value="{{ pokemon_1.picture }}">{{ pokemon_1.name }}</option>
     {% endfor %}
     </select>
+    
+    <!--Female Pokemon-->
     <select name="pokemon" id="female_pokemon" class="large-4 column">
         <option value="{% static 'img/pokeball.jpg' %}">
             &lt;Select a Pokemon First&gt;
@@ -34,11 +37,10 @@
         <option value="{{ pokemon_2.picture }}">{{ pokemon_2.name }}</option>
     {% endfor %}
     </select>
-<button type="submit" class="hollow button secondary" id="addToFavorites">
+<button type="button" class="hollow button secondary" id="addToFavorites">
 	Add To Favorites
 </button> 
-</form>
-
+</div>
     <div class="grid-x">
             
             <div class="small-6 cell"> 

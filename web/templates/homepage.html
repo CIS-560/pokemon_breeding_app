@@ -3,18 +3,16 @@
 {% load staticfiles %}
 {% block content %}
 <script src="/static/js/base.js" type="text/javascript" charset="utf-8"></script>
-
-<form id="form-inline" data-abide="ajax" action="/results" method="GET">
+<form id="form-inline" data-abide="ajax" action="{% url 'results' %}" method="POST">
     {% csrf_token %}
     <fieldset id="desired-poke">
-    <!-- Autocomplete search all pokemon -->
     <div class="row align-spaced">
         <div class="column small-4  cell" id="poke-pic"> 
             <img src="{% static 'img/pokeball.jpg' %}" id="poke-pic">
         </div>
         <div class="column large-8">
             <div class="row">
-            <select name="pokemon" id="pokemon-select" class="large-4 column">
+            <select name="pokemon" id="pokemon_select" class="large-4 column">
                 <option value="{% static 'img/pokeball.jpg' %}">
                     &lt;Select a Pokemon First&gt;
                 </option>
@@ -23,8 +21,8 @@
                 {% endfor %}
             </select>
             </div>
-            <div class="row">
-            <select name="egg-move-select" id="egg-move-select" class="large-4 column">
+            <div class="cell">
+            <select name="egg_move_select" id="egg_move_select" class="large-4 column">
                 <option value="not_selected">&lt;Select a Move&gt;</option>
             </select>
             </div>
