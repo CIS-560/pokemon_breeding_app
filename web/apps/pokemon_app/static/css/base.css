@@ -78,6 +78,7 @@
 
 body {
     overflow:scroll;
+    margin: 2rem;
 }
 
 #search-parents-button {
