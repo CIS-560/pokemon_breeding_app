@@ -11,12 +11,24 @@ type_names.short_description = "Type Names"
 class PokemonAdmin(admin.ModelAdmin):
     list_display = ('name', type_names,)
 
+class MovesAdmin(admin.ModelAdmin):
+    list_display = ('move_num', 'name',)
+
+class TypeAdmin(admin.ModelAdmin):
+    list_display = ('type_num', 'name',)
+    
+class EggGroupAdmin(admin.ModelAdmin):
+    list_display = ('name', 'can_breed')
+
+class LevelUpMoveAdmin(admin.ModelAdmin):
+    list_display = ('pokemon', 'move', 'level')
+
+
 # Register your models here.
 admin.site.register(Pokemon, PokemonAdmin)
-admin.site.register(Type)
-admin.site.register(EggGroup)
-admin.site.register(LevelUpMove)
-admin.site.register(Moves)
-admin.site.register(PokemonType)
+admin.site.register(Type, TypeAdmin)
+admin.site.register(EggGroup, EggGroupAdmin)
+admin.site.register(LevelUpMove, LevelUpMoveAdmin)
+admin.site.register(Moves, MovesAdmin)
 admin.site.register(HistoryTrios)
 
