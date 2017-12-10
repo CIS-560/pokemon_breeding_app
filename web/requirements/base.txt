@@ -6,3 +6,5 @@ django-allauth
 django-csvimport
 pandas
 tablib
+django-shell-plus
+ipython

@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.pokemon_app',
     'csvimport.app.CSVImportConf',
+    'shell_plus'
 ]
 
 MIDDLEWARE = [
