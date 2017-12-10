@@ -12,7 +12,7 @@ $(document).ready(function() {
           $('#poke-pic').attr("src",this.value);
     });
     */
-    $("#egg-move-select").on('change', function() {
+    $("#egg_move_select").on('change', function() {
         $( '#search-parents-button' ).prop('disabled', false);
     });
 });
