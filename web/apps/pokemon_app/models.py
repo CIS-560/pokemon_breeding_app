@@ -5,11 +5,9 @@ class Type(models.Model):
     type_num = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=20)
 
-
 class Moves(models.Model):
     move_num = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=20)
-
 
 class EggGroup(models.Model):
     name = models.CharField(max_length=15, primary_key=True)

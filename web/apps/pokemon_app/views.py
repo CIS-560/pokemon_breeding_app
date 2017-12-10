@@ -44,6 +44,22 @@ def egg_moves(request):
         # return the egg moves that correspond to the chosen pokemon
 
 @csrf_exempt
+def add_to_favorites(request):
+    male = request.POST['male_pokemon']
+    female = request.POST['female_pokemon']
+    child = request.POST['child']
+    move = request.POST['egg_move']
+    level = request.POST['level']
+    pokemon = request.POST['pokemon']
+
+    if request.method == 'POST':
+        # select query for all necessary pokemon goes here 
+
+        #insert query for history trios goes here
+        return "success"
+        # return the egg moves that correspond to the chosen pokemon
+        
+@csrf_exempt
 def get_values(request):
     selected_move = request.POST.get('egg_move_select')
     selected_poke = request.POST.get('pokemon-select')
@@ -64,8 +80,9 @@ def results(request):
     female_pokemons = Pokemon.objects.exclude(female_ratio=0)
     male_pokemons = Pokemon.objects.exclude(male_ratio=0)
     #pokemons = zip(female_pokemons, male_pokemons)
+    child = (temp,selected_move)
     #return render(request, '../templates/results.html', {'pokemons':pokemons})
-    return render(request, '../templates/results.html', {'child':(pokemon,selected_egg_move),male_pokemon':male_pokemons, 'female_pokemon': female_pokemons})
+    return render(request, '../templates/results.html', {'child':child, 'male_pokemon':male_pokemons, 'female_pokemon': female_pokemons})
 
 
 def simple_upload(request):
