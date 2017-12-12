@@ -81,9 +81,10 @@ def results(request):
     #get egg move in question
     move = Moves.objects.get(name= selected_move)
     female_pokemons = [poke]
+    female_pokemon_egg_group = poke.egg_groups.all()
 
     # male_pokemons= Pokemon.objects.filter(level_up_moves=move).exclude(male_ratio=0)
-    male_pokemons = LevelUpMove.objects.filter(move=move).exclude(pokemon__male_ratio=0)
+    male_pokemons = LevelUpMove.objects.filter(move=move, pokemon__egg_groups__in=female_pokemon_egg_group).exclude(pokemon__male_ratio=0)
     return render(request, '../templates/results.html', {'male_pokemon':male_pokemons, 'female_pokemon': female_pokemons})
 
 def simple_upload(request):
