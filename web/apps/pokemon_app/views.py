@@ -19,13 +19,12 @@ def app_entry(request):
     if request.method == 'POST':
         # pokemon = request.GET.get('pokemon')
         # pokemon_obj_name = Pokemon.objects.get(name = pokemon)
-        print('yay im print')
         # print(pokemon_obj_name)
         #moves = Moves.objects.all()
         selecter_poke = request.POST.get('pokemon_select')
         selected_move = request.POST.get('egg_move_select');
         selected_name = Moves.objects.get(name= selected_move)
-        print('pokemon', selecter_poke, 'move', selected_move)
+#        print('pokemon', selecter_poke, 'move', selected_move)
         # selected = Pokemon.objects.get(name = selected_pokemon)
         return redirect(request, 'results')
     pokemons = Pokemon.objects.all()
@@ -45,6 +44,9 @@ def egg_moves(request):
 
 @csrf_exempt
 def add_to_favorites(request):
+    if request.user.is_authenticated():
+        username = request.user.username    
+
     male = request.POST['male_pokemon']
     female = request.POST['female_pokemon']
     child = request.POST['child']
@@ -54,8 +56,20 @@ def add_to_favorites(request):
 
     if request.method == 'POST':
         # select query for all necessary pokemon goes here 
-
+        male_pokemon = Pokemon.objects.get(name=male)
+        female_pokemon = Pokemon.objects.get(name=female)
+        child_pokemon = Pokemon.objects.get(name=child)
+        move_pokemon = Moves.objects.get(name= selected_move)
+        level_up = LevelUpMove.objects.get(level=level, pokemon=male_pokemon, move=move) 
+        egg_move = Moves.objects.get(name=move)  
+ 
         #insert query for history trios goes here
+        HistoryTrios.objects.create(username=username,
+                                    parent1=male_pokemon,
+                                    parent2=female_pokemon,
+                                    child=child_pokemon,
+                                    parent_level_up_move=level_up,
+                                    child_egg_move=egg_move)
         return "success"
         # return the egg moves that correspond to the chosen pokemon
         
@@ -75,7 +89,7 @@ def results(request):
     selected_move = request.POST.get('egg_move_select')
     selected_poke = request.POST.get('pokemon')
     temp = selected_poke[4::].split(".",1)[0]
-    print('we have',temp,'with',selected_move)
+#    print('we have',temp,'with',selected_move)
     poke = Pokemon.objects.get(name=temp) 
 
     #get egg move in question

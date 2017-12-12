@@ -2,11 +2,6 @@
 {% load static %}
 {% block content %}
 <script src="/static/js/foundation.js"></script>
-<script>
-        $(document).ready(function(){
-                $(document).foundation();
-        });
-    </script>
 <script src="/static/js/results.js"></script>
 <!--Success Callout-->
 <div class="success callout" data-closable id="fav-callout">
@@ -26,7 +21,7 @@
             &lt;Select a Pokemon First&gt;
         </option>
     {% for pokemon_1 in male_pokemon %}
-        <option value="{{ pokemon_1.pokemon.picture }}">{{ pokemon_1.pokemon.name }} with Level {{pokemon_1.level}}</option>
+        <option value="{{ pokemon_1.pokemon.picture }}">{{ pokemon_1.pokemon.name }} - lvl {{pokemon_1.level}}</option>
     {% endfor %}
     </select>
     
@@ -46,7 +41,7 @@
     <div class="grid-x">
             
             <div class="small-6 cell"> 
-                <h4>Male/Ditto Possibilities</h4>
+                <h4>Male/Ditto</h4>
     {% for pokemon_1 in male_pokemon %}
         <ul class="accordion" data-accordion data-allow-all-closed="true" data-multi-expand="true">
             <li class="accordion-item" data-accordion-item>
@@ -79,7 +74,7 @@
   {% endfor %}
   </div>
   <div class="small-6 cell">
-      <h4>Female/Genderless Possibilities</h4>
+      <h4>Female/Genderless</h4>
     {% for pokemon_2 in female_pokemon %}
         <ul class="accordion" data-accordion data-allow-all-closed="true" data-multi-expand="true">
             <li class="accordion-item" data-accordion-item>
