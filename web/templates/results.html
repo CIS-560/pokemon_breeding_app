@@ -30,8 +30,8 @@
         <option value="{% static 'img/pokeball.jpg' %}">
             &lt;Select a Pokemon First&gt;
         </option>
-    {% for pokemon_2 in male_pokemon %}
-        <option value="{{ pokemon_2.pokemon.picture }}">{{ pokemon_2.pokemon.name }}</option>
+    {% for pokemon_2 in female_pokemon %}
+        <option value="{{ pokemon_2.picture }}">{{ pokemon_2.name }}</option>
     {% endfor %}
     </select>
 <button type="button" class="hollow button secondary" id="addToFavorites">
