@@ -8,12 +8,6 @@ $(document).foundation();
     //    $('#addToFavorites').attr('disabled', 'disabled');
 
     //when the add to fav button is clicked
-    /*
-    var sentence = document.querySelector("#sentence").textContent;
-    var words = sentence.split(" ");
-    var child = words[2];
-    var egg_move = words[4];
-    console.log("egg move " + egg_move)*/
 	document.getElementById("addToFavorites").addEventListener("click", buttonClicked);
 });
 
@@ -37,7 +31,10 @@ function buttonClicked(child, egg_move) {
 
     //get parents
     var male_temp = document.getElementById('male_pokemon');
-    var male = male_temp.options[male_temp.selectedIndex].text;
+    var temp = male_temp.options[male_temp.selectedIndex].text;
+    var temp2 = temp.split(" ");
+    var male = temp2[0];
+    var level = temp2[1];
     var female_temp = document.getElementById('male_pokemon');
     var female = female_temp.options[female_temp.selectedIndex].text;
     
