@@ -72,7 +72,7 @@ def add_to_favorites(request):
                                     parent1=male_pokemon,
                                     parent2=female_pokemon,
                                     child=child_pokemon,
-                                    parent_level_up_move=move_pokemon,
+                                    parent_level_up_move=level_up,
                                     child_egg_move=egg_move)
     return JsonResponse({'child': child, 'move':move}) 
         # return the egg moves that correspond to the chosen pokemon

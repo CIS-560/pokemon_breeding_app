@@ -8,7 +8,7 @@
     <fieldset id="desired-poke">
     <div class="row align-spaced">
         <div class="column small-4  cell" id="poke-pic"> 
-            <img src="{% static 'img/pokeball.jpg' %}" id="poke-pic">
+            <img src="{% static 'img/pokeball.jpg' %}" id="poke-pic" >
         </div>
         <div class="column large-8">
             <div class="row">
@@ -21,7 +21,7 @@
                 {% endfor %}
             </select>
             </div>
-            <div class="cell">
+            <div class="row">
             <select name="egg_move_select" id="egg_move_select" class="large-4 column">
                 <option value="not_selected">&lt;Select a Move&gt;</option>
             </select>

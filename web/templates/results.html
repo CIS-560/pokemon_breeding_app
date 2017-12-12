@@ -45,14 +45,17 @@
     {% for pokemon_1 in male_pokemon %}
         <ul class="accordion" data-accordion data-allow-all-closed="true" data-multi-expand="true">
             <li class="accordion-item" data-accordion-item>
-                <a href="#" class="accordion-title">{{ pokemon_1.pokemon.name  }}</a>
+                <a href="#" class="accordion-title">
+                    {{ pokemon_1.pokemon.name  }}
+                    <img src="/static/img/pokemon/{{ pokemon_1.pokemon.picture }}" alt="{{pokemon_1.pokemon.name}}" />
+                </a>
                 <div class="accordion-content" data-tab-content>
                     <table class="hover">
                         <thead>
-                            <tr><th width="200">Details</th><th width=200>Male/Ditto</th><th width=150></th></tr>
+                            <tr><th width="200">Details</th><th width=200>Male/Ditto</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td>Name</td><td>{{ pokemon_1.pokemon.name }}</td><td rowspan=4><img ng-src="static/img/pokemon/{{ pokemon_1.pokemon.picture }}" alt="{{pokemon_1.pokemon.name}}" width=100%</td></tr>
+                            <tr><td>Name</td><td>{{ pokemon_1.pokemon.name }}</td>
                             <tr><td>Pokemon Number</td><td>{{ pokemon_1.pokemon.number }}</td></tr>
                             <tr><td>Classification</td><td>{{ pokemon_1.pokemon.description }}</td></tr>
                             <tr><td>Type</td><td>
@@ -78,7 +81,10 @@
     {% for pokemon_2 in female_pokemon %}
         <ul class="accordion" data-accordion data-allow-all-closed="true" data-multi-expand="true">
             <li class="accordion-item" data-accordion-item>
-                <a href="#" class="accordion-title">{{ pokemon_2.name  }}</a>
+                <a href="#" class="accordion-title">
+                    {{ pokemon_2.name  }}
+                    <img src="/static/img/pokemon/{{ pokemon_1.pokemon.picture }}" alt="{{pokemon_1.pokemon.name}}" />
+                </a>
                 <div class="accordion-content" data-tab-content>
                     <table class="hover">
                         <thead>

@@ -52,7 +52,7 @@ class HistoryTrios(models.Model):
     child = models.ForeignKey(Pokemon, related_name='%(class)s_child')
 
     # relation on these?
-    parent_level_up_move = models.ForeignKey(Moves, 
+    parent_level_up_move = models.ForeignKey(LevelUpMove, 
                                              related_name='%(class)s_parent_level_up_move')
     child_egg_move = models.ForeignKey(Moves, 
                                        related_name='%(class)s_child_egg_move')
