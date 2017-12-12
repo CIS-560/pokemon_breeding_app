@@ -76,14 +76,15 @@ def results(request):
     selected_poke = request.POST.get('pokemon')
     temp = selected_poke[4::].split(".",1)[0]
     print('we have',temp,'with',selected_move)
-    # poke = get_object_or_404(Pokemon, pk=selected_poke) 
-    female_pokemons = Pokemon.objects.exclude(female_ratio=0)
-    male_pokemons = Pokemon.objects.exclude(male_ratio=0)
-    #pokemons = zip(female_pokemons, male_pokemons)
-    child = (temp,selected_move)
-    #return render(request, '../templates/results.html', {'pokemons':pokemons})
-    return render(request, '../templates/results.html', {'child':child, 'male_pokemon':male_pokemons, 'female_pokemon': female_pokemons})
+    poke = Pokemon.objects.get(name=temp) 
 
+    #get egg move in question
+    move = Moves.objects.get(name= selected_move)
+    female_pokemons = [poke]
+
+    # male_pokemons= Pokemon.objects.filter(level_up_moves=move).exclude(male_ratio=0)
+    male_pokemons = LevelUpMove.objects.filter(move=move).exclude(pokemon__male_ratio=0)
+    return render(request, '../templates/results.html', {'male_pokemon':male_pokemons, 'female_pokemon': female_pokemons})
 
 def simple_upload(request):
     if request.method == 'POST':

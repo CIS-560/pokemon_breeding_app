@@ -25,7 +25,6 @@ class Pokemon(models.Model):
     level_up_moves = models.ManyToManyField(Moves, through='LevelUpMove')
     egg_moves = models.ManyToManyField(Moves, related_name='%(class)s_egg_move')
     egg_groups = models.ManyToManyField(EggGroup)
-#    url = models.CharField(max_length=1000)
 
 class PokemonType(models.Model):
     #id auto-generated
