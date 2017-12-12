@@ -18,6 +18,12 @@ $(document).ready(function() {
 });
 
 function pokemonSelectionChanged() {
+    var select = document.getElementById("egg_move_select");
+    var length = select.options.length;
+    for (i = 0; i < length; i++) {
+        select.options[i] = null;
+        //        console.log(i)
+    }
     var str = "";
     var pokemon = "";
     var test ="";
