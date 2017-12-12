@@ -46,23 +46,25 @@ def egg_moves(request):
 def add_to_favorites(request):
     if request.user.is_authenticated():
         username = request.user.username    
+    male = request.POST.get('male_pokemon')
+    female = request.POST.get('female_pokemon')
+    child = request.POST.get('child')
+    move = request.POST.get('egg_move')
+    level = request.POST.get('level')
+    print("\n\n\n level", level)
+    pokemon = request.POST.get('pokemon')
 
-    male = request.POST['male_pokemon']
-    female = request.POST['female_pokemon']
-    child = request.POST['child']
-    move = request.POST['egg_move']
-    level = request.POST['level']
-    pokemon = request.POST['pokemon']
-
-    if request.method == 'POST':
-        # select query for all necessary pokemon goes here 
-        male_pokemon = Pokemon.objects.get(name=male)
-        female_pokemon = Pokemon.objects.get(name=female)
-        child_pokemon = Pokemon.objects.get(name=child)
-        move_pokemon = Moves.objects.get(name= selected_move)
-        level_up = LevelUpMove.objects.get(level=level, pokemon=male_pokemon, move=move) 
-        egg_move = Moves.objects.get(name=move)  
+    # select query for all necessary pokemon goes here 
+    male_pokemon = Pokemon.objects.get(name=male)
+    female_pokemon = Pokemon.objects.get(name=female)
+    child_pokemon = Pokemon.objects.get(name=child)
+    move_pokemon = Moves.objects.get(name=move)
+    level_up = LevelUpMove.objects.get(level=level, 
+                                       pokemon=male_pokemon, 
+                                       move=move_pokemon) 
+    egg_move = Moves.objects.get(name=move)  
  
+    if request.method == 'POST':
         #insert query for history trios goes here
         HistoryTrios.objects.create(username=username,
                                     parent1=male_pokemon,

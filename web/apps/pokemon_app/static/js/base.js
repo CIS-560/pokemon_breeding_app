@@ -1,7 +1,6 @@
 $(document).ready(function() {
     $("#egg_move_select").attr('disabled','disabled'); // disable
     $("#search-parents-button").attr('disabled','disabled'); // disable
-    console.log("test");
     $.ajaxSetup({
             headers:
             { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
