@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import Pokemon, Type, LevelUpMove
-from .models import Moves #, HistoryTrios
+from .models import Moves, HistoryTrios
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login as auth_login, authenticate
 from django.shortcuts import redirect 
+from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from tablib import Dataset
@@ -19,13 +20,12 @@ def app_entry(request):
     if request.method == 'POST':
         # pokemon = request.GET.get('pokemon')
         # pokemon_obj_name = Pokemon.objects.get(name = pokemon)
-        print('yay im print')
         # print(pokemon_obj_name)
         #moves = Moves.objects.all()
         selecter_poke = request.POST.get('pokemon_select')
         selected_move = request.POST.get('egg_move_select');
         selected_name = Moves.objects.get(name= selected_move)
-        print('pokemon', selecter_poke, 'move', selected_move)
+#        print('pokemon', selecter_poke, 'move', selected_move)
         # selected = Pokemon.objects.get(name = selected_pokemon)
         return redirect(request, 'results')
     pokemons = Pokemon.objects.all()
@@ -45,18 +45,36 @@ def egg_moves(request):
 
 @csrf_exempt
 def add_to_favorites(request):
-    male = request.POST['male_pokemon']
-    female = request.POST['female_pokemon']
-    child = request.POST['child']
-    move = request.POST['egg_move']
-    level = request.POST['level']
-    pokemon = request.POST['pokemon']
+    if request.user.is_authenticated():
+        username = request.user.username    
+        user = User.objects.get(username=username)
 
+    male = request.POST.get('male_pokemon')
+    female = request.POST.get('female_pokemon')
+    child = request.POST.get('child')
+    move = request.POST.get('egg_move')
+    level = int(request.POST.get('level'))
+    pokemon = request.POST.get('pokemon')
+
+    # select query for all necessary pokemon goes here 
+    male_pokemon = Pokemon.objects.get(name=male)
+    female_pokemon = Pokemon.objects.get(name=female)
+    child_pokemon = Pokemon.objects.get(name=child)
+    move_pokemon = Moves.objects.get(name=move)
+    level_up = LevelUpMove.objects.get(level=level, 
+                                       pokemon=male_pokemon, 
+                                       move=move_pokemon) 
+    egg_move = Moves.objects.get(name=move)  
+ 
     if request.method == 'POST':
-        # select query for all necessary pokemon goes here 
-
         #insert query for history trios goes here
-        return "success"
+        HistoryTrios.objects.create(username=user,
+                                    parent1=male_pokemon,
+                                    parent2=female_pokemon,
+                                    child=child_pokemon,
+                                    parent_level_up_move=move_pokemon,
+                                    child_egg_move=egg_move)
+    return JsonResponse({'child': child, 'move':move}) 
         # return the egg moves that correspond to the chosen pokemon
         
 @csrf_exempt
@@ -66,7 +84,6 @@ def get_values(request):
     print('we have',selected_poke,'with',selected_move)
     return redirect('results' )
 
-
 #male pokemon: male pokemon & ditto 
 #female pokemon: female pokemon or ungendered (if breeding with a ditto)
 def results(request):
@@ -75,7 +92,7 @@ def results(request):
     selected_move = request.POST.get('egg_move_select')
     selected_poke = request.POST.get('pokemon')
     temp = selected_poke[4::].split(".",1)[0]
-    print('we have',temp,'with',selected_move)
+#    print('we have',temp,'with',selected_move)
     poke = Pokemon.objects.get(name=temp) 
 
     #get egg move in question

@@ -11,3 +11,6 @@ web/config/settings/__pycache__/base.cpython-35.pyc
 /web/.DS_Store
 /web/apps/.DS_Store
 /web/apps/pokemon_app/.DS_Store 
+web/apps/__pycache__/__init__.cpython-35.pyc 
+web/config/settings/__pycache__/dev.cpython-35.pyc
+web/config/settings/__pycache__/secret.cpython-35.pyc

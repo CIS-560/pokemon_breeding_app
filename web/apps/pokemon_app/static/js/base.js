@@ -1,7 +1,6 @@
 $(document).ready(function() {
     $("#egg_move_select").attr('disabled','disabled'); // disable
     $("#search-parents-button").attr('disabled','disabled'); // disable
-    console.log("test");
     $.ajaxSetup({
             headers:
             { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
@@ -18,6 +17,12 @@ $(document).ready(function() {
 });
 
 function pokemonSelectionChanged() {
+    var select = document.getElementById("egg_move_select");
+    var length = select.options.length;
+    for (i = 0; i < length; i++) {
+        select.options[i] = null;
+        //        console.log(i)
+    }
     var str = "";
     var pokemon = "";
     var test ="";
