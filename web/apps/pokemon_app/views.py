@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import Pokemon, Type, LevelUpMove
-from .models import Moves #, HistoryTrios
+from .models import Moves, HistoryTrios
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login as auth_login, authenticate
 from django.shortcuts import redirect 
+from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from tablib import Dataset
@@ -46,12 +47,13 @@ def egg_moves(request):
 def add_to_favorites(request):
     if request.user.is_authenticated():
         username = request.user.username    
+        user = User.objects.get(username=username)
+
     male = request.POST.get('male_pokemon')
     female = request.POST.get('female_pokemon')
     child = request.POST.get('child')
     move = request.POST.get('egg_move')
-    level = request.POST.get('level')
-    print("\n\n\n level", level)
+    level = int(request.POST.get('level'))
     pokemon = request.POST.get('pokemon')
 
     # select query for all necessary pokemon goes here 
@@ -66,13 +68,13 @@ def add_to_favorites(request):
  
     if request.method == 'POST':
         #insert query for history trios goes here
-        HistoryTrios.objects.create(username=username,
+        HistoryTrios.objects.create(username=user,
                                     parent1=male_pokemon,
                                     parent2=female_pokemon,
                                     child=child_pokemon,
-                                    parent_level_up_move=level_up,
+                                    parent_level_up_move=move_pokemon,
                                     child_egg_move=egg_move)
-        return "success"
+    return JsonResponse({'child': child, 'move':move}) 
         # return the egg moves that correspond to the chosen pokemon
         
 @csrf_exempt
@@ -81,7 +83,6 @@ def get_values(request):
     selected_poke = request.POST.get('pokemon-select')
     print('we have',selected_poke,'with',selected_move)
     return redirect('results' )
-
 
 #male pokemon: male pokemon & ditto 
 #female pokemon: female pokemon or ungendered (if breeding with a ditto)
