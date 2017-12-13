@@ -49,6 +49,7 @@ def add_to_favorites(request):
         username = request.user.username    
         user = User.objects.get(username=username)
 
+    print('time to add to favorites')
     male = request.POST.get('male_pokemon')
     female = request.POST.get('female_pokemon')
     child = request.POST.get('child')
@@ -61,6 +62,8 @@ def add_to_favorites(request):
     female_pokemon = Pokemon.objects.get(name=female)
     child_pokemon = Pokemon.objects.get(name=child)
     move_pokemon = Moves.objects.get(name=move)
+    print(move_pokemon)
+    print(type(move_pokemon))
     level_up = LevelUpMove.objects.get(level=level, 
                                        pokemon=male_pokemon, 
                                        move=move_pokemon) 
@@ -68,12 +71,18 @@ def add_to_favorites(request):
  
     if request.method == 'POST':
         #insert query for history trios goes here
+        print('Move is' + move_pokemon.name)
+        print('Type is' + str(type(move_pokemon)))
+        print(' level up stuff ' + str(type(level_up)))
+        print(' level up stuff ' + str(level_up.level))
+        print(' level up stuff ' + level_up.pokemon.name)
+        print(' level up stuff ' + str(level_up.move_id))
         HistoryTrios.objects.create(username=user,
                                     parent1=male_pokemon,
                                     parent2=female_pokemon,
                                     child=child_pokemon,
-                                    parent_level_up_move=level_up,
-                                    child_egg_move=egg_move)
+                                    parentmove=level_up,
+                                    childmove=egg_move)
     return JsonResponse({'child': child, 'move':move}) 
         # return the egg moves that correspond to the chosen pokemon
         
